@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toggle Switch Example</title>
+<style>
+    /* Some basic styling for better appearance */
+    .container {
+        margin: 50px auto;
+        text-align: center;
+    }
+    .toggle {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+    .toggle input {
+        display: none;
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Toggle Switch Example</h2>
+    <p>Toggle the switch to see the result:</p>
+
+    <!-- Toggle switch input -->
+    <label class="toggle">
+        <input type="checkbox" id="toggleInput">
+        <span class="slider"></span>
+    </label>
+
+    <!-- Text to display based on toggle state -->
+    <div id="outputText"></div>
+</div>
+
+<script>
+    // JavaScript to handle toggle switch state change and display text accordingly
+    const toggleInput = document.getElementById('toggleInput');
+    const outputText = document.getElementById('outputText');
+
+    toggleInput.addEventListener('change', function() {
+        if (this.checked) {
+            outputText.textContent = 'Toggle switch is ON';
+        } else {
+            outputText.textContent = 'Toggle switch is OFF';
+        }
+    });
+</script>
+
+</body>
+</html>
