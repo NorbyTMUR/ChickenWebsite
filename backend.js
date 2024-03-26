@@ -1,4 +1,4 @@
-var scoutname
+var scoutname 
 var temnumber
 var matchnumber
 var alliance
@@ -8,6 +8,7 @@ var autospeakerpoints
 var autoleftzone
 var teleamppoints
 var telespeakerpoints
+//how far I have gotten-->
 var telespeakeramplifiedpoints
 var telepasses
 

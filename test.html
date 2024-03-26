@@ -1,48 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toggle Switch Example</title>
+    <link rel="stylesheet" href="stuff.css">
+    <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Scouting</title>
 </head>
+
 <body>
+    <label for="Scout Name">Scout Name:</label>
+    <input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
+    <br>
 
-<label for="Scout Name">Scout Name:</label>
+    <label for="Team Number">Team Number Scouted:</label>
 
-<input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
-<br>
+    <input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
+    <br>
+    <label for="Match Number">Match Number:</label>
+    <input type="number" id="quantity" name="quantity" min="0" max="100000000000"/>
 
-<label for="Team Number">Team Number:</label>
+    <br><br>
 
-<input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
-<p>Match Number:</p>
-<input type="number" id="quantity" name="quantity" min="0" max="100000000000"/>
-<!--<input type="number" id="matchNumber" name="matchNumber" min="0" max="100000000000"/> -->
-<p>Alliance:</p>
-    <!-- Toggle switch input -->
-    <input type="checkbox" id="my-toggle">
-    <label for="my-toggle">Alliance</label>
-    
-    <label class="toggle">
-        <input type="checkbox" id="toggleInput">
-        <span class="slider"></span>
-    </label>
+    <h3>Alliance</h3>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Blue</button>
+        <button type="button" class="btn btn-danger">Red</button>
+    </div>
+  
+    <br><br>
+
+    <div class="container">
+        <h2>Auto</h2>
+        <p>Left zone:</p>
+        <label class="switch">
+            <input type="checkbox" id="toggleInput">
+            <span class="slider round"></span>
+        </label>
+
+        <p>Amp Points</p>
+        <input type="number" id="quantity" name="quantity" min="0" max="100000000000"/> <br>
+
+        <p>Speaker Points</p>
+        <input type="number" id="quantity" name="quantity" min="0" max="100000000000"/> <br>
+    </div>
 
 <div class="container">
-    <h2>Auto</h2>
-    <p>Left zone:</p>
-    <!-- Toggle switch input -->
-    <label class="toggle">
-        <input type="checkbox" id="toggleInput">
-        <span class="slider round"></span>
-    </label>
+    <h2>Teleop</h2>
+
+    <p>Amp Points</p>
+    <input type="number" id="quantity" name="quantity" min="0" max="100000000000"/> <br>
+
+    <p>Speaker Points</p>
+    <input type="number" id="quantity" name="quantity" min="0" max="100000000000"/> <br>
 </div>
 
 <script>
     // JavaScript to handle toggle switch state change and display text accordingly
+    //TODO: Start backend, make data structure
+    //TODO: finish adding the fields
     const toggleInput = document.getElementById('toggleInput');
     const outputText = document.getElementById('outputText');
 </script>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 </html>
