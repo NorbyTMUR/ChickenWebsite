@@ -13,37 +13,43 @@
 
 <body>
     <label for="Scout Name">Scout Name:</label>
-    <input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
+    <input type="text" id="scoutName" name="name" required minlength="0" maxlength="246" size="10" />
     <br>
 
-    <label for="Team Number">Team Number Scouted:</label>
+    <label for="teamNum">Team Number Scouted:</label>
 
-    <input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
+    <input type="text" id="teamNum" name="name" required minlength="0" maxlength="246" size="10" />
     <br>
-    <label for="Match Number">Match Number:</label>
+    <label for="matchNum">Match Number:</label>
     <input type="number" id="matchNum" name="quantity" min="0" max="100000000000"/>
 
     <br><br>
 
     <h3>Alliance</h3>
     <div class="btn-group" role="group">
-        <button type="button" class="btn btn-primary" id="allianceBlue">Blue</button>
+        <!--this onclick is not working-->
+        <button type="button" class="btn btn-primary" id="allianceBlue" onclick="blueFunction">Blue</button>
+        
         <button type="button" class="btn btn-danger" id="allianceRed">Red</button>
         <script>
-            var blueAlliance = new Boolean([0]);
-            var redAlliance = new Boolean([0]);
-            document.getElementById("allianceBlue").addEventListener("click", blueFunction);
-            document.getElementById("allianceRed").addEventListener("click", redFunction);
-            //TODO get it to override the boolean with whichever was clicked more recently - a team cant be both red& blue.
+            var blueAlliance = new Boolean(false);
+            var redAlliance = new Boolean(false);
+            //document.getElementById("allianceBlue").addEventListener("click", blueFunction);
+            //document.getElementById("allianceRed").addEventListener("click", redFunction);
+            
             function blueFunction() {
                 document.getElementById("allianceBlue").innerHTML = "you clicked me";
                 blueAlliance = document.getElementById("allianceBlue");
+                blueAlliance = true;
+                //overrides previous alliance setting with the button clicked most recently.
+                redAlliance = false;
                 //this will not print the actual value anyway because it hasn't gotten the value. Worry about this a bit later.
                 //for testing
                 console.log(blueAlliance);
             }
             function redFunction() {
                 redAlliance = document.getElementById("allianceRed");
+                blueAlliance = false;
                 //for testing
                 console.log(redAlliance);
             }
