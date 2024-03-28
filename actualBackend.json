@@ -1,6 +1,6 @@
-//what is going on with this json. also comments are not permitted.
-console.log(JSON.stringify({x:3}),);
+
+console.log(JSON.stringify({x:3}));
 
 {
-    "leftZone": 
+    "leftZone": 2
 }
