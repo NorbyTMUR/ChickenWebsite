@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="stuff.css">
     <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +13,15 @@
 </head>
 
 <body>
-    <label for="Scout Name">Scout Name:</label>
-    <input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
+    <label>Scout Name:</label>
+    <input type="text" id="scoutname" name="name" required minlength="0" maxlength="246" size="10" />
     <br>
 
-    <label for="Team Number">Team Number Scouted:</label>
+    <label>Team Number Scouted:</label>
 
-    <input type="text" id="name" name="name" required minlength="0" maxlength="246" size="10" />
+    <input type="text" id="teamnum" name="name" required minlength="0" maxlength="246" size="10" />
     <br>
-    <label for="Match Number">Match Number:</label>
+    <label>Match Number:</label>
     <input type="number" id="matchNum" name="quantity" min="0" max="100000000000"/>
 
     <br><br>
@@ -30,20 +31,24 @@
         <button type="button" class="btn btn-primary" id="allianceBlue">Blue</button>
         <button type="button" class="btn btn-danger" id="allianceRed">Red</button>
         <script>
-            var blueAlliance = new Boolean([0]);
-            var redAlliance = new Boolean([0]);
-            document.getElementById("allianceBlue").addEventListener("click", blueFunction);
-            document.getElementById("allianceRed").addEventListener("click", redFunction);
+            var selectedAlliance = null
+            document.getElementById("allianceBlue").addEventListener("click", addAutoSpeaker);
+            document.getElementById("allianceRed").addEventListener("click", subAutoSpeaker);
             //TODO get it to override the boolean with whichever was clicked more recently - a team cant be both red& blue.
-            function blueFunction() {
+            function addAutoSpeaker() {
                 document.getElementById("allianceBlue").innerHTML = "you clicked me";
+                document.getElementById('allianceRed').textContent = 'Red'
                 blueAlliance = document.getElementById("allianceBlue");
+                selectedAlliance = "Blue"
                 //this will not print the actual value anyway because it hasn't gotten the value. Worry about this a bit later.
                 //for testing
                 console.log(blueAlliance);
             }
-            function redFunction() {
+            function subAutoSpeaker() {
                 redAlliance = document.getElementById("allianceRed");
+                document.getElementById("allianceRed").textContent = 'you clicked me';
+                document.getElementById('allianceBlue').textContent = 'Blue'
+                selectedAlliance = "Red"
                 //for testing
                 console.log(redAlliance);
             }
@@ -53,39 +58,85 @@
     <br><br>
 
     <div class="container">
-        <h2>Auto</h2>
-        <p>Left zone:</p>
-        <label class="switch">
-            <input type="checkbox" id="leftZone">
-            <span class="slider round"></span>
-        </label>
-        <script>
-            var leftZoneBool = new Boolean([0]);
-            document.getElementById("leftZone").addEventListener("click", fnLeftZone);
-            function fnLeftZone() {
-                leftZoneBool = document.getElementById("leftZone");
-                //for testing
-                console.log(leftZoneBool);
-            }
-        </script>
+        <h2>Auto:</h2>
+        
+        <div class="btn-group-autoscores" role="group">
+            <label>Left zone:</label>
+            <label style="float: right;" class="switch">
+                <input type="checkbox" id="leftZone">
+                <span class="slider round"></span>
+            </label>
+            <script>
+                var leftZoneBool = false;
+                document.getElementById("leftZone").addEventListener("click", fnLeftZone);
+                function fnLeftZone() {
+                    leftZoneBool = !leftZoneBool;
+                    //for testing
+                    console.log(leftZoneBool);
+                }
+            </script>
+        </div>
 
-        <p>Amp Points</p>
-        <input type="number" id="autoAmpPts" name="quantity" min="0" max="100000000000"/> <br>
-        <script>
-            //have one submit button at the end. Don't worry about the individual stepper (which is onclick anyway)
-            //
-            let autoAmpPtsInt = 0;
-            document.getElementById("autoAmpPts").addEventListener("click", fnAutoAmpPts);
-            function fnAutoAmpPts() {
-                autoAmpPtsInt = document.getElementById("autoAmpPts").value;
-                //for testing
-                console.log(autoAmpPtsInt);
-            }
-        </script>
+        <br>
 
-        <p>Speaker Points</p>
-        <input type="number" id="autoSpPts" name="quantity" min="0" max="100000000000"/> <br>
+        <div class="btn-group-autoscores" role="group">
+            <label id="speakerAutoScores">Speaker Scores: 0</label>
+            <button style="float: right;" type="button" class="btn btn-secondary" id="addAutoSpeaker">+</button>
+            <button style="float: right" type="button" class="btn btn-secondary" id="subAutoSpeaker">-</button>
+            <script>
+                var autoSpeakerCount = 0
+                document.getElementById("addAutoSpeaker").addEventListener("click", addAutoSpeaker);
+                document.getElementById("subAutoSpeaker").addEventListener("click", subAutoSpeaker);
+                //TODO get it to override the boolean with whichever was clicked more recently - a team cant be both red& blue.
+                function addAutoSpeaker() {
+                    autoSpeakerCount++;
+                    if(autoSpeakerCount > 9) autoSpeakerCount = 9;
+                    document.getElementById("speakerAutoScores").textContent = "Speaker Scores: " + autoSpeakerCount;
+                    //this will not print the actual value anyway because it hasn't gotten the value. Worry about this a bit later.
+                    //for testing
+                    console.log('good one');
+                }
+                function subAutoSpeaker() {
+                    autoSpeakerCount--;
+                    if(autoSpeakerCount < 0) autoSpeakerCount = 0;
+                    document.getElementById("speakerAutoScores").textContent = "Speaker Scores: " + autoSpeakerCount;
+                    //for testing
+                    console.log('second good one');
+                }
+            </script>
+        </div>        
+
+        <br>
+
+        <div class="btn-group-autoscores" role="group">
+            <label id="autoAmpScores">Amp Scores: 0</label>
+            <button style="float: right;" type="button" class="btn btn-secondary" id="addAutoAmp">+</button>
+            <button style="float: right" type="button" class="btn btn-secondary" id="subAutoAmp">-</button>
+            <script>
+                var autoAmpCount = 0
+                document.getElementById("addAutoAmp").addEventListener("click", addAutoSpeaker);
+                document.getElementById("subAutoAmp").addEventListener("click", subAutoSpeaker);
+                //TODO get it to override the boolean with whichever was clicked more recently - a team cant be both red& blue.
+                function addAutoSpeaker() {
+                    autoAmpCount++;
+                    if(autoAmpCount > 9) autoAmpCount = 9;
+                    document.getElementById("autoAmpScores").textContent = "Amp Scores: " + autoAmpCount;
+                    //this will not print the actual value anyway because it hasn't gotten the value. Worry about this a bit later.
+                    //for testing
+                    console.log('good one');
+                }
+                function subAutoSpeaker() {
+                    autoAmpCount--;
+                    if(autoAmpCount < 0) autoAmpCount = 0;
+                    document.getElementById("autoAmpScores").textContent = "Amp Scores: " + autoAmpCount;
+                    //for testing
+                    console.log('second good one');
+                }
+            </script>
+        </div> 
     </div>
+
+<br><br>
 
 <div class="container">
     <h2>Teleop</h2>
@@ -97,17 +148,53 @@
     <input type="number" id="teleSpPts" name="quantity" min="0" max="100000000000"/> <br>
 </div>
 
-<script>
-    // JavaScript to handle toggle switch state change and display text accordingly
-    //TODO: Figure out how to collect the data in a json file (hosted maybe on postgre sql), work from there.
-    //TODO: finish adding the fields
-    const toggleInput = document.getElementById('allianceBlue');
-    jsobj = {}
-    jsobj['alliance'] = toggleInput
-    // const outputText = document.getElementById('outputText');
-    console.log("Here I am on my own....")
+<br><br>
 
-</script>
+<div class="container">
+    <div class="btn-danger">
+        <button style="float: left;" type="button" class="btn btn-secondary" id="submit">Submit!!!</button>
+    </div>
+
+    <br><br>
+
+    <div id="QRCode"></div>
+    <script>
+
+        // JavaScript to handle toggle switch state change and display text accordingly
+        //TODO: Figure out how to collect the data in a json file (hosted maybe on postgre sql), work from there.
+        //TODO: finish adding the fields
+        document.getElementById('submit').addEventListener("click", submitButton)
+        // const outputText = document.getElementById('outputText');
+        console.log("Here I am on my own....")
+
+        function submitButton() {
+            console.log("Auto amps: " + autoAmpCount);
+            console.log("Auto speakers: " + autoSpeakerCount);
+            console.log("Alliance: " + selectedAlliance);
+            console.log("Here I am on my own....");
+            console.log("My name is " + document.getElementById("scoutname"));
+            console.log("I scouted team " + document.getElementById("teamnum"));
+            generateqr();
+            // console.log("Auto amps: " + autoAmpCount)
+            // console.log("Auto amps: " + autoAmpCount)
+        }
+
+        function generateqr() {
+            jsobj = {
+                "scoutname": document.getElementById('scoutname').value,
+                "teamnumber": Number(document.getElementById("teamnum").value),
+                "matchnumber": Number(document.getElementById("matchNum").value),
+                "alliance": selectedAlliance,
+                "autoamppoints": autoAmpCount * 2,
+                "autospeakerpoints": autoSpeakerCount * 5,
+                "autoleftzone": leftZoneBool,
+            }
+            
+            var qr = new QRCode("QRCode", JSON.stringify(jsobj));
+        }
+    
+    </script>
+</div>
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
