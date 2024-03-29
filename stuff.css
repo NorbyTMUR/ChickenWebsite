@@ -1,3 +1,7 @@
+.container {
+    left:30px;
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
