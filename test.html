@@ -67,9 +67,41 @@
     <p>Amp Points</p>
     <input type="number" id="teleAmpPts" name="quantity" min="0" max="100000000000"/> <br>
 
-    <p>Speaker Points</p>
+    <p>Speaker Points (unamplified)</p>
     <input type="number" id="teleSpPts" name="quantity" min="0" max="100000000000"/> <br>
 
+    <p>Speaker Points (amplified)</p>
+    <input type="number" id="teleSpAmplifiedPts" name="quantity" min="0" max="100000000000"/> <br>
+
+    <p>Passes to teammates</p>
+    <input type="number" id="passes" name="quantity" min="0" max="100000000000"/> <br>
+
+    <p>Drops</p>
+    <input type="number" id="drops" name="quantity" min="0" max="100000000000"/> <br>
+</div>
+<div class="container">
+    <h2>Endgame</h2>
+
+    <label class="switch">
+        <p>Climbed:</p>
+        <input type="checkbox" id="climbed">
+        <span class="slider round"></span>
+    </label>
+
+    <label class="switch">
+        <p>Parked:</p>
+        <input type="checkbox" id="parked">
+        <span class="slider round"></span>
+    </label>
+
+    <label class="switch">
+        <p>Traps:</p>
+        <input type="checkbox" id="traps">
+        <span class="slider round"></span>
+    </label>
+
+
+    
     <br><br>
     <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit</button>
 </div>

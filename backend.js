@@ -45,8 +45,8 @@
     function collectData(){
         fnLeftZone();
         
-        pointCounter("autoAmpPts");
-        pointCounter("autoSpPts");
+        pointCounter("autoAmpPts") * 2;
+        pointCounter("autoSpPts") * 5;
         pointCounter("teleAmpPts");
-        pointCounter("teleSpPts");
+        pointCounter("teleSpPts") * 2;
     }

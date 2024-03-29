@@ -3,23 +3,23 @@ var temnumber
 var matchnumber
 var alliance
 
-var autoamppoints
-var autospeakerpoints
-var autoleftzone
+var autoamppoints *2
+var autospeakerpoints  *5
+var autoleftzone *2
 var teleamppoints
-var telespeakerpoints
-//how far I have gotten-->
-var telespeakeramplifiedpoints
-var telepasses
+var telespeakerpoints *2
+
+var telespeakeramplifiedpoints *5
+var telepasses 
 
 var drops
 
-var climbed
-var parked
+var climbed *3
+var parked 
 
-var harmony
-var trap
-var numtraps
+var harmony *2
+var trap *5
+var numtraps *5
 var offeredcoop
 var didcoop
 
