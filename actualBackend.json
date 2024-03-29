@@ -1,5 +1,4 @@
 
-console.log(JSON.stringify({x:3}));
 
 {
     "leftZone": 2

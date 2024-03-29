@@ -2,49 +2,51 @@
     var blueAlliance = new Boolean(false);
     var redAlliance = new Boolean(false);
     //might want to just keep this here so that it overrides the other button.
-    //document.getElementById("allianceBlue").addEventListener("click", blueFunction);
-    //document.getElementById("allianceRed").addEventListener("click", redFunction);
     
-    function blueFunction() {
-        document.getElementById("allianceBlue").innerHTML = "you clicked me";
-        blueAlliance = document.getElementById("allianceBlue");
-        blueAlliance = true;
-        //overrides previous alliance setting with the button clicked most recently.
-        redAlliance = false;
-        //this will not print the actual value anyway because it hasn't gotten the value. Worry about this a bit later.
-        //for testing
+    function redFunction() {
+        redAlliance = true;
+        blueAlliance = false;
+        document.getElementById("allianceRed").innerHTML = "you clicked me";
         console.log(blueAlliance);
     }
-    function redFunction() {
-        redAlliance = document.getElementById("allianceRed");
-        blueAlliance = false;
+
+    function blueFunction(){
+        blueAlliance = true;
+        redAlliance = false;
+        document.getElementById("allianceBlue").innerHTML = "you clicked me";    
         //for testing
         console.log(redAlliance);
     }
 
-    var leftZoneBool = new Boolean([0]);
-    //document.getElementById("leftZone").addEventListener("click", fnLeftZone);
+    var leftZoneBool = new Boolean(false);
     function fnLeftZone() {
-        leftZoneBool = document.getElementById("leftZone");
-        //for testing
+        //TODO: something's going on with this boolean... it prints 'on' to the console no matter what.
+        leftZoneBool = document.getElementById("leftZone").value;
         console.log(leftZoneBool);
     }
 
-    //have one submit button at the end. Don't worry about the individual stepper (which is onclick anyway)
-    //
-    let autoAmpPtsInt = 0;
-    document.getElementById("autoAmpPts").addEventListener("click", fnAutoAmpPts);
-    function fnAutoAmpPts() {
-        autoAmpPtsInt = document.getElementById("autoAmpPts").value;
-        //for testing
-        console.log(autoAmpPtsInt);
+    /**
+     * @precondition takes a string name
+     */
+    let pts = 0;
+    function pointCounter(name){
+        pts = document.getElementById(name).value;
+        console.log(pts);
     }
-
+    
     // JavaScript to handle toggle switch state change and display text accordingly
-    //TODO: Figure out how to collect the data in a json file (hosted maybe on postgre sql), work from there.
-    //TODO: finish adding the fields
+    //TODO: Figure out how to collect the data in a json file (turns into a qrcode)
+    
     const toggleInput = document.getElementById('allianceBlue');
     jsobj = {}
     jsobj['alliance'] = toggleInput
-    // const outputText = document.getElementById('outputText');
-    console.log("Here I am on my own....")
+    console.log("Here I am on my own....");
+
+    function collectData(){
+        fnLeftZone();
+        
+        pointCounter("autoAmpPts");
+        pointCounter("autoSpPts");
+        pointCounter("teleAmpPts");
+        pointCounter("teleSpPts");
+    }
