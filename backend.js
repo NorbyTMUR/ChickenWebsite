@@ -7,23 +7,27 @@
         redAlliance = true;
         blueAlliance = false;
         document.getElementById("allianceRed").innerHTML = "you clicked me";
+        document.getElementById("allianceBlue").innerHTML = "Blue";
         console.log(blueAlliance);
     }
 
     function blueFunction(){
         blueAlliance = true;
         redAlliance = false;
-        document.getElementById("allianceBlue").innerHTML = "you clicked me";    
+        document.getElementById("allianceBlue").innerHTML = "you clicked me";  
+        document.getElementById("allianceRed").innerHTML = "Red";  
         //for testing
         console.log(redAlliance);
     }
 
-    var leftZoneBool = new Boolean(false);
-    function fnLeftZone() {
-        //TODO: something's going on with this boolean... it prints 'on' to the console no matter what.
-        leftZoneBool = document.getElementById("leftZone").value;
-        console.log(leftZoneBool);
+
+    var isChecked = new Boolean(false);
+    function fnChecked(elementName) {
+        isChecked = document.getElementById("elementName").checked;
+        console.log(isChecked);
     }
+
+
 
     /**
      * @precondition takes a string name
@@ -43,10 +47,15 @@
     console.log("Here I am on my own....");
 
     function collectData(){
-        fnLeftZone();
-        
+        //fnChecked("leftZone") *2;
         pointCounter("autoAmpPts") * 2;
         pointCounter("autoSpPts") * 5;
         pointCounter("teleAmpPts");
         pointCounter("teleSpPts") * 2;
+        pointCounter("teleSpAmplifiedPts") * 5;
+
+        pointCounter("passes");
+        pointCounter("drops");
+
+        //fnChecked("climbed") * 3;
     }
