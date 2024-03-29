@@ -99,10 +99,47 @@
     <p1>Traps:</p1><br>
     <label class="switch">
         <input type="checkbox" id="traps">
+        <span class="slider round" onclick = "on_click()"></span>
+    </label>
+    <input type="hidden" id="trapsNum" name="quantity" min="0" max="100000000000" value="0" >
+    
+    <script>
+        function on_click(){
+            var y = document.getElementById("trapsNum");
+            y.type= "number";
+        }
+    </script>
+    <br><br>
+
+    <p1>Offered co-op:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="offeredcoop">
         <span class="slider round"></span>
-    </label><br>
+    </label><br><br>
 
+    <p1>Did Co-op:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="didcoop">
+        <span class="slider round"></span>
+    </label><br><br>
 
+    <p1>Amp Mike:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="ampmike">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <p1>Source Mike:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="sourcemike">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <p1>Center Mike:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="centermike">
+        <span class="slider round"></span>
+    </label>
     
     <br><br>
     <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit</button>

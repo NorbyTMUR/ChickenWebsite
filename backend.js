@@ -1,14 +1,13 @@
-
+    //also should input these booleans into the json
     var blueAlliance = new Boolean(false);
     var redAlliance = new Boolean(false);
-    //might want to just keep this here so that it overrides the other button.
     
     function redFunction() {
         redAlliance = true;
         blueAlliance = false;
         document.getElementById("allianceRed").innerHTML = "you clicked me";
         document.getElementById("allianceBlue").innerHTML = "Blue";
-        console.log(blueAlliance);
+        console.log(redAlliance);
     }
 
     function blueFunction(){
@@ -23,7 +22,7 @@
 
     var isChecked = new Boolean(false);
     function fnChecked(elementName) {
-        isChecked = document.getElementById("elementName").checked;
+        isChecked = document.getElementById(elementName).checked;
         console.log(isChecked);
     }
 
@@ -47,7 +46,7 @@
     console.log("Here I am on my own....");
 
     function collectData(){
-        //fnChecked("leftZone") *2;
+        fnChecked("leftZone") *2;
         pointCounter("autoAmpPts") * 2;
         pointCounter("autoSpPts") * 5;
         pointCounter("teleAmpPts");
@@ -57,5 +56,16 @@
         pointCounter("passes");
         pointCounter("drops");
 
-        //fnChecked("climbed") * 3;
+        fnChecked("climbed") * 3;
+        fnChecked("parked");
+        fnChecked("traps");
+
+        pointCounter("trapsNum") * 5;
+
+        fnChecked("offeredcoop");
+        fnChecked("didcoop");
+        fnChecked("ampmike");
+        fnChecked("sourcemike");
+        fnChecked("centermike");
+        
     }
