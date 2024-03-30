@@ -41,12 +41,10 @@
         return pts;
     }
     
-    let alertNeeded = false;
     function getTextbox(name){
         let input = document.getElementById(name).value;
-        if(input == null){
-            input = "";
-            alertNeeded = true;
+        if(input == undefined){
+            input = ""; 
         }
         return input;
        
@@ -59,7 +57,13 @@
         let jsobj = {}
 
         jsobj["teamNum"] = getTextbox("teamNum");
+        if(getTextbox("teamNum") == ""){
+            alert("please fill out all fields");
+        }
         jsobj["matchNum"] = getTextbox("matchNum");
+        if(getTextbox("matchNum") == ""){
+            alert("please fill out all fields");
+        }
 
         if(blueAlliance ==true && redAlliance == false){
             jsobj["alliance"] = "blue";
@@ -99,17 +103,8 @@
         var qr = new QRCode("QRCode", JSON.stringify(jsobj));
         
         qr;
-
-        if(alertNeeded == true){
-         window.alert("please fill out all fields.");
-        }
         
         console.log("Here I am on my own....");
-
-        /**if(alertNeeded == true){
-            return alertNeeded;
-        }*/
-        
     }
 
    
