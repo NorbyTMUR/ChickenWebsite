@@ -28,6 +28,33 @@
         return isChecked == true ? 1:0
     }
 
+    function pluMinus(id, inputField){
+        //let increment = document.getElementById(id);
+        let increment = id.includes("plus");
+        
+        //let currentVal = document.getElementById().value;
+        console.log("increment = " + increment )
+        if(increment == true){
+            id = id.replace("plus","");
+            let currentId = id + "points";
+            currentVal = document.getElementById(currentId).value;
+            currentVal++;
+            document.getElementById(currentId).value =  currentVal;
+            console.log("plus " +currentVal);
+            return
+        }
+        else{
+            id = id.replace("minus","");
+            let currentId = id + "points";
+            currentVal = document.getElementById(currentId).value;
+            currentVal--;
+            document.getElementById(currentId).value =  currentVal;
+            console.log("minus " +currentVal);
+            return
+        }
+        console.log("wth " + currentVal);
+    }
+
     /**
      * @precondition takes a string name
      */
@@ -49,13 +76,17 @@
         return input;
        
     }
+    let jsobj = {}
    
     // JavaScript to handle toggle switch state change and display text accordingly
-
+    function stepperCollect(id){
+        jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
+        jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints");
+    }
     
     function collectData(){
-        let jsobj = {}
-
+        
+        
         jsobj["teamnumber"] = getTextbox("teamnumber");
         if(getTextbox("teamnumber") == ""){
             alert("please fill out all fields");

@@ -30,9 +30,11 @@
 
     <br><br>
 <h8>Please do not type in the fields. Instead, use the steppers on the sides.</h8><br><br>
+
     
 <div class="container">
     <h3>Alliance</h3>
+
     <div class="btn-group" role="group">
          
         <button input type="radio" type="button" value="blue" class="btn btn-primary" id="allianceBlue"><!--Blue</button>-->
@@ -61,17 +63,23 @@
         </label>
 
         <br><br><p>Amp:</p>
-        <!-- TODO: can only increment using the up and down arrows - make more intuitive :( -->
-        <input type="number" id="autoamppoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
+        <button type="button" class="btn btn-primary" id="autoampplus" onclick = "stepperCollect(this.id)">+</button>
+        <input type="number" id="autoamppoints" name="quantity" min="0" max="100000000000" value="0" disabled/>
+        <button type="button" class="btn btn-primary" id="autoampminus" onclick = "stepperCollect(this.id)">-</button> <br>
+
         <br><p>Speaker:</p>
-        <input type="number" id="autospeakerpoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
+        <button type="button" class="btn btn-primary" id="autospeakerplus" onclick = "stepperCollect(this.id)">+</button>
+        <input type="number" id="autospeakerpoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
+        <button type="button" class="btn btn-primary" id="autospeakerminus" onclick = "stepperCollect(this.id)">-</button><br>
     </div>
 
 <div class="container">
     <br><br><h2>Teleop</h2>
 
     <br><p>Amp:</p>
-    <input type="number" id="teleamppoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <button type="button" class="btn btn-primary" id="teleampplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="number" id="teleamppoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
+    <button type="button" class="btn btn-primary" id="teleampminus" onclick = "stepperCollect(this.id)">-</button><br>
 
     <br><p>Speaker (unamplified):</p>
     <input type="number" id="telespeakerpoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
