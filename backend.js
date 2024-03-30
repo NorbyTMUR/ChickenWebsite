@@ -46,13 +46,12 @@
         let input = document.getElementById(name).value;
         if(input == null){
             input = "";
-            
             alertNeeded = true;
         }
         return input;
        
     }
-    window.alert("hi");
+   
     // JavaScript to handle toggle switch state change and display text accordingly
 
     
@@ -96,12 +95,12 @@
         jsobj["sourcemike"] = fnChecked("sourcemike");
         jsobj["centermike"] = fnChecked("centermike");
         console.log(JSON.stringify(jsobj))
-
+        
         var qr = new QRCode("QRCode", JSON.stringify(jsobj));
         qr;
 
         if(alertNeeded == true){
-         alert("hello");
+         window.alert("please fill out all fields.");
         }
         
         console.log("Here I am on my own....");
