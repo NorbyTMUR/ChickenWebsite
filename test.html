@@ -29,7 +29,7 @@
     
 
     <br><br>
-<h8>Note: from now on, please do not type in the fields. Instead, use the steppers on the sides.</h8><br><br>
+<h8>Please do not type in the fields. Instead, use the steppers on the sides.</h8><br><br>
     
 <div class="container">
     <h3>Alliance</h3>
@@ -60,23 +60,23 @@
             <span class="slider round"></span>
         </label>
 
-        <br><br><p>Amp Points:</p>
+        <br><br><p>Amp:</p>
         <!-- TODO: can only increment using the up and down arrows - make more intuitive :( -->
         <input type="number" id="autoAmpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
-        <br><p>Speaker Points:</p>
+        <br><p>Speaker:</p>
         <input type="number" id="autoSpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
     </div>
 
 <div class="container">
     <br><br><h2>Teleop</h2>
 
-    <br><p>Amp Points:</p>
+    <br><p>Amp:</p>
     <input type="number" id="teleAmpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
 
-    <br><p>Speaker Points (unamplified):</p>
+    <br><p>Speaker (unamplified):</p>
     <input type="number" id="teleSpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
 
-    <br><p>Speaker Points (amplified):</p>
+    <br><p>Speaker (amplified):</p>
     <input type="number" id="teleSpAmplifiedPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
 
     <br><p>Number of passes to teammates:</p>
@@ -145,7 +145,7 @@
         <span class="slider round"></span>
     </label>
     <br><br>
-    <p3>Note: to generate a new qrcode, reload the page</p3>
+    <p3>To prevent a qrcode wall, reload the page</p3>
     <br><br>
     <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit (Generate QR Code)</button>
     
