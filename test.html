@@ -82,16 +82,24 @@
     <button type="button" class="btn btn-primary" id="teleampminus" onclick = "stepperCollect(this.id)">-</button><br>
 
     <br><p>Speaker (unamplified):</p>
-    <input type="number" id="telespeakerpoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <button type="button" class="btn btn-primary" id="telespeakerplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="number" id="telespeakerpoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
+    <button type="button" class="btn btn-primary" id="telespeakerminus" onclick = "stepperCollect(this.id)">-</button><br>
 
     <br><p>Speaker (amplified):</p>
-    <input type="number" id="telespeakeramplifiedpoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <button type="button" class="btn btn-primary" id="telespeakeramplifiedplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="number" id="telespeakeramplifiedpoints" name="quantity" min="0" max="100000000000" value="0" disabled/>
+    <button type="button" class="btn btn-primary" id="telespeakeramplifiedminus" onclick = "stepperCollect(this.id)">-</button><br>
 
     <br><p>Number of passes to teammates:</p>
-    <input type="number" id="passes" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <button type="button" class="btn btn-primary" id="passesplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="number" id="passes" name="quantity" min="0" max="100000000000" value="0" disabled/> 
+    <button type="button" class="btn btn-primary" id="passesminus" onclick = "stepperCollect(this.id)">-</button>
 
     <br><p>Drops:</p>
-    <input type="number" id="drops" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <button type="button" class="btn btn-primary" id="dropsplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="number" id="drops" name="quantity" min="0" max="100000000000" value="0" disabled/> 
+    <button type="button" class="btn btn-primary" id="dropsminus" onclick = "stepperCollect(this.id)">-</button><br>
     
 </div><br><br>
 <div class="container">

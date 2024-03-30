@@ -79,9 +79,14 @@
     let jsobj = {}
    
     // JavaScript to handle toggle switch state change and display text accordingly
+    //increments by the multiplier (which is not correct). FIX THIS LATER.
     function stepperCollect(id){
         jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
         jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints");
+        jsobj["telespeakerpoints"] = pluMinus(id, "telespeakerpoints");
+        jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints");
+        jsobj["passes"] = pluMinus(id, "passes");
+        jsobj["drops"] = pluMinus(id, "drops");
     }
     
     function collectData(){
