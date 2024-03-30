@@ -97,6 +97,7 @@
         console.log(JSON.stringify(jsobj))
         
         var qr = new QRCode("QRCode", JSON.stringify(jsobj));
+        
         qr;
 
         if(alertNeeded == true){
