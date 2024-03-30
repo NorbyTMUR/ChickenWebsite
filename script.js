@@ -1,14 +1,13 @@
 // variables for all stats needed
 var selectedAlliance = null
-var leftZoneBool = false;
 var autoSpeakerCount = 0
 var autoAmpCount = 0
 
+const leftZone = document.getElementById("leftZone");
 
 // click listener for all buttons
-document.getElementById("allianceBlue").addEventListener("click", selectRedAllinace);
-document.getElementById("allianceRed").addEventListener("click", selectBlueAlliance);            
-document.getElementById("leftZone").addEventListener("click", fnLeftZone);
+document.getElementById("allianceBlue").addEventListener("click", selectBlueAlliance);
+document.getElementById("allianceRed").addEventListener("click", selectRedAlliance);
 document.getElementById("addAutoSpeaker").addEventListener("click", addAutoSpeaker);
 document.getElementById("subAutoSpeaker").addEventListener("click", subAutoSpeaker);
 document.getElementById("addAutoAmp").addEventListener("click", addAutoAmp);
@@ -16,7 +15,7 @@ document.getElementById("subAutoAmp").addEventListener("click", subAutoAmp);
 
             
 // functions to modify values
-function selectRedAllinace() {
+function selectBlueAlliance() {
     document.getElementById("allianceBlue").innerHTML = "you clicked me";
     document.getElementById('allianceRed').textContent = 'Red'
     blueAlliance = document.getElementById("allianceBlue");
@@ -25,19 +24,16 @@ function selectRedAllinace() {
     //for testing
     console.log(blueAlliance);
 }
-function selectBlueAlliance() {
+
+function selectRedAlliance() {
     redAlliance = document.getElementById("allianceRed");
     document.getElementById("allianceRed").textContent = 'you clicked me';
     document.getElementById('allianceBlue').textContent = 'Blue'
     selectedAlliance = "Red"
     //for testing
     console.log(redAlliance);
-}
+    console.log(leftZone.checked);
 
-function fnLeftZone() {
-    leftZoneBool = !leftZoneBool;
-    //for testing
-    console.log(leftZoneBool);
 }
 
 function addAutoSpeaker() {
@@ -88,14 +84,20 @@ function submitButton() {
     console.log("Auto speakers: " + autoSpeakerCount);
     console.log("Alliance: " + selectedAlliance);
     console.log("Here I am on my own....");
-    console.log("My name is " + document.getElementById("scoutname"));
-    console.log("I scouted team " + document.getElementById("teamnum"));
+    console.log("My name is " + document.getElementById("scoutname").value);
+    console.log("I scouted team " + document.getElementById("teamnum").value);
     generateqr();
     // console.log("Auto amps: " + autoAmpCount)
     // console.log("Auto amps: " + autoAmpCount)
+
+    console.log("data input successful!")
+    reset();
 }
 
+var qr;
+
 function generateqr() {
+    
     jsobj = {
         "scoutname": document.getElementById('scoutname').value,
         "teamnumber": Number(document.getElementById("teamnum").value),
@@ -103,8 +105,28 @@ function generateqr() {
         "alliance": selectedAlliance,
         "autoamppoints": autoAmpCount * 2,
         "autospeakerpoints": autoSpeakerCount * 5,
-        "autoleftzone": leftZoneBool,
+        "autoleftzone": leftZone.checked,
+    }
+    if(qr instanceof QRCode) {
+        qr.clear();
+        console.log("yes it is");
+        qr.makeCode(JSON.stringify(jsobj));
+    }else {
+        qr = new QRCode("QRCode", JSON.stringify(jsobj));
     }
     
-    var qr = new QRCode("QRCode", JSON.stringify(jsobj));
+}
+
+function reset() {
+    console.log("we are resetting")
+
+    selectedAlliance = null
+    autoSpeakerCount = 0
+    autoAmpCount = 0
+
+    document.getElementById("speakerAutoScores").textContent = "Speaker Scores: " + autoSpeakerCount;
+    document.getElementById("autoAmpScores").textContent = "Amp Scores: " + autoAmpCount;
+    document.getElementById("leftZone").checked = false;
+
+    console.log("we have reset")
 }
