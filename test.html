@@ -26,6 +26,7 @@
     <br>
     <label for="matchNum">Match Number:</label>
     <input type="text" id="matchNum" name="quantity" required minlength="0" maxlength="246" size="10"/>
+    
 
     <br><br>
 <h8>Note: from now on, please do not type in the fields. Instead, use the steppers on the sides.</h8><br><br>
@@ -83,6 +84,7 @@
 
     <br><p>Drops:</p>
     <input type="number" id="drops" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    
 </div><br><br>
 <div class="container">
     <h2>Endgame</h2><br>
@@ -142,12 +144,14 @@
         <input type="checkbox" id="centermike">
         <span class="slider round"></span>
     </label>
-    
     <br><br>
-    <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit</button>
+    <p3>Note: to generate a different qrcode, reload the page</p3>
+    <br><br>
+    <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit (Generate QR Code)</button>
+    
 
-    <div class="sqrcode"></div> 
-    <div class="qrcode"></div> 
+    
+    <br><br><div id="QRCode"></div><br><br>
 
 </div>
 <div id="root"></div>

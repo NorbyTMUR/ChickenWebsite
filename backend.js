@@ -28,8 +28,6 @@
         return isChecked == true ? 1:0
     }
 
-
-
     /**
      * @precondition takes a string name
      */
@@ -43,20 +41,37 @@
         return pts;
     }
     
-    // JavaScript to handle toggle switch state change and display text accordingly
-    //TODO: Figure out how to collect the data in a json file (turns into a qrcode)
-    
-    function generateQr(input) { 
-        let qrcode = new QRCode(document.querySelector(".qrcode")); 
-
-        qrcode.makeCode( 
-            document.querySelector( 
-                input
-            ).value); 
+    let alertNeeded = false;
+    function getTextbox(name){
+        let input = document.getElementById(name).value;
+        if(input == null){
+            input = "";
+            
+            alertNeeded = true;
+        }
+        return input;
+       
     }
+    window.alert("hi");
+    // JavaScript to handle toggle switch state change and display text accordingly
+
     
     function collectData(){
         let jsobj = {}
+
+        jsobj["teamNum"] = getTextbox("teamNum");
+        jsobj["matchNum"] = getTextbox("matchNum");
+
+        if(blueAlliance ==true && redAlliance == false){
+            jsobj["alliance"] = "blue";
+        }
+        else if (redAlliance == true && blueAlliance == false){
+            jsobj["alliance"] = "red";
+        }
+        else{
+            jsobj["alliance"] = "not selected";
+        }
+
         jsobj['leftZone'] = fnChecked("leftZone") *2;
         jsobj["autoAmpPts"] = pointCounter("autoAmpPts") * 2;
         jsobj["autoSpPts"] = pointCounter("autoSpPts") * 5;
@@ -81,9 +96,19 @@
         jsobj["sourcemike"] = fnChecked("sourcemike");
         jsobj["centermike"] = fnChecked("centermike");
         console.log(JSON.stringify(jsobj))
-        generateQr(JSON.stringify(jsobj));
+
+        var qr = new QRCode("QRCode", JSON.stringify(jsobj));
+        qr;
+
+        if(alertNeeded == true){
+         alert("hello");
+        }
         
         console.log("Here I am on my own....");
+
+        /**if(alertNeeded == true){
+            return alertNeeded;
+        }*/
         
     }
 
