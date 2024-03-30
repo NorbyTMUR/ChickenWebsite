@@ -16,8 +16,8 @@
 
 <body>
     <!--TODO: actually set up accounts with postgresql (last priority)-->
-    <label for="scoutName">Scout Name:</label>
-    <input type="text" id="scoutName" name="name" required minlength="0" maxlength="246" size="10" />
+    <label for="scoutname">Scout Name:</label>
+    <input type="text" id="scoutname" name="name" required minlength="0" maxlength="246" size="10" />
     <br>
 
     <label for="teamnumber">Team Number Scouted:</label>
@@ -102,9 +102,9 @@
 
     <p1>Traps:</p1><br>
     <label class="switch"> <div class="btn-group-autoscores" role="group">
-        <label id="speakerAutoScores">Speaker Scores: 0</label>
+        <!--<label id="speakerAutoScores">Speaker Scores: 0</label>
         /<button style="float: right;" type="button" class="btn btn-secondary" id="addAutoSpeaker">+</button>
-        <button style="float: right" type="button" class="btn btn-secondary" id="subAutoSpeaker">-</button>
+        <button style="float: right" type="button" class="btn btn-secondary" id="subAutoSpeaker">-</button>-->
     </div>     
         <input type="checkbox" id="traps">
         <span class="slider round" onclick = "on_click()"></span>
@@ -149,6 +149,9 @@
         <span class="slider round"></span>
     </label>
     <br><br>
+    <label for="extranotes">Extra Notes:</label>
+    <input type="text" id="extranotes" name="name" required minlength="0" maxlength="246" size="10" />
+    <br>
     <p3>To prevent a qrcode wall, reload the page</p3>
     <br><br>
     <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit (Generate QR Code)</button>

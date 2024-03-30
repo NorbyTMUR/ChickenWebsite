@@ -65,6 +65,11 @@
             alert("please fill out all fields");
         }
 
+        jsobj["scoutname"] = getTextbox("scoutname");
+        if(getTextbox("scoutname") == ""){
+            alert("please fill out all fields");
+        }
+
         if(blueAlliance ==true && redAlliance == false){
             jsobj["alliance"] = "blue";
         }
@@ -99,6 +104,9 @@
         jsobj["ampmike"] = fnChecked("ampmike");
         jsobj["sourcemike"] = fnChecked("sourcemike");
         jsobj["centermike"] = fnChecked("centermike");
+
+        jsobj["extranotes"] = getTextbox("extranotes");
+
         console.log(JSON.stringify(jsobj))
         
         var qr = new QRCode("QRCode", JSON.stringify(jsobj));
