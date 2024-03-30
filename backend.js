@@ -80,8 +80,9 @@
    
     // JavaScript to handle toggle switch state change and display text accordingly
     //increments by the multiplier (which is not correct). FIX THIS LATER.
-    function stepperCollect(id){
+    function stepperCollect(){
         jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
+        //FOUND THE ISSUE: the error is that I'm calling all these things in the same thing aaa. Give them their individual ids, instead of id.
         jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints");
         jsobj["telespeakerpoints"] = pluMinus(id, "telespeakerpoints");
         jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints");
