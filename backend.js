@@ -56,12 +56,12 @@
     function collectData(){
         let jsobj = {}
 
-        jsobj["teamNum"] = getTextbox("teamNum");
-        if(getTextbox("teamNum") == ""){
+        jsobj["teamnumber"] = getTextbox("teamnumber");
+        if(getTextbox("teamnumber") == ""){
             alert("please fill out all fields");
         }
-        jsobj["matchNum"] = getTextbox("matchNum");
-        if(getTextbox("matchNum") == ""){
+        jsobj["matchnumber"] = getTextbox("matchnumber");
+        if(getTextbox("matchnumber") == ""){
             alert("please fill out all fields");
         }
 
@@ -75,12 +75,12 @@
             jsobj["alliance"] = "not selected";
         }
 
-        jsobj['leftZone'] = fnChecked("leftZone") *2;
-        jsobj["autoAmpPts"] = pointCounter("autoAmpPts") * 2;
-        jsobj["autoSpPts"] = pointCounter("autoSpPts") * 5;
-        jsobj["teleAmpPts"] = pointCounter("teleAmpPts");
-        jsobj["teleSpPts"] = pointCounter("teleSpPts") * 2;
-        jsobj["teleSpAmplifiedPts"] = pointCounter("teleSpAmplifiedPts") * 5;
+        jsobj['autoleftzone'] = fnChecked("autoleftzone") *2;
+        jsobj["autoamppoints"] = pointCounter("autoamppoints") * 2;
+        jsobj["autospeakerpoints"] = pointCounter("autospeakerpoints") * 5;
+        jsobj["teleamppoints"] = pointCounter("teleamppoints");
+        jsobj["telespeakerpoints"] = pointCounter("telespeakerpoints") * 2;
+        jsobj["telespeakeramplifiedpoints"] = pointCounter("telespeakeramplifiedpoints") * 5;
 
         jsobj["passes"] = pointCounter("passes");
         jsobj["drops"] = pointCounter("drops");
@@ -88,13 +88,14 @@
         jsobj["climbed"] = fnChecked("climbed") * 3;
         jsobj["parked"] = fnChecked("parked");
         jsobj["traps"] = fnChecked("traps");
-
-        jsobj["trapsNum"] = pointCounter("trapsNum") * 5;
+        //!!add bool harmony
+        //add trap bool
+        //add extranotes String!!
+        jsobj["numtraps"] = pointCounter("numtraps") * 5;
 
         jsobj["offeredcoop"] = fnChecked("offeredcoop");
         jsobj["didcoop"] = fnChecked("didcoop");
-        //maybe create a further divider for this, or have these appear if the human 
-        //player made their throw.
+        
         jsobj["ampmike"] = fnChecked("ampmike");
         jsobj["sourcemike"] = fnChecked("sourcemike");
         jsobj["centermike"] = fnChecked("centermike");

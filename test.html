@@ -20,12 +20,12 @@
     <input type="text" id="scoutName" name="name" required minlength="0" maxlength="246" size="10" />
     <br>
 
-    <label for="teamNum">Team Number Scouted:</label>
+    <label for="teamnumber">Team Number Scouted:</label>
 
-    <input type="text" id="teamNum" name="name" required minlength="0" maxlength="246" size="10" />
+    <input type="text" id="teamnumber" name="name" required minlength="0" maxlength="246" size="10" />
     <br>
-    <label for="matchNum">Match Number:</label>
-    <input type="text" id="matchNum" name="quantity" required minlength="0" maxlength="246" size="10"/>
+    <label for="matchnumber">Match Number:</label>
+    <input type="text" id="matchnumber" name="quantity" required minlength="0" maxlength="246" size="10"/>
     
 
     <br><br>
@@ -56,28 +56,28 @@
         <h2>Auto</h2>
         <p>Left zone:</p>
         <label class="switch">
-            <input type="checkbox" id="leftZone">
+            <input type="checkbox" id="autoleftzone">
             <span class="slider round"></span>
         </label>
 
         <br><br><p>Amp:</p>
         <!-- TODO: can only increment using the up and down arrows - make more intuitive :( -->
-        <input type="number" id="autoAmpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+        <input type="number" id="autoamppoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
         <br><p>Speaker:</p>
-        <input type="number" id="autoSpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+        <input type="number" id="autospeakerpoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
     </div>
 
 <div class="container">
     <br><br><h2>Teleop</h2>
 
     <br><p>Amp:</p>
-    <input type="number" id="teleAmpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <input type="number" id="teleamppoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
 
     <br><p>Speaker (unamplified):</p>
-    <input type="number" id="teleSpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <input type="number" id="telespeakerpoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
 
     <br><p>Speaker (amplified):</p>
-    <input type="number" id="teleSpAmplifiedPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    <input type="number" id="telespeakeramplifiedpoints" name="quantity" min="0" max="100000000000" value="0"/> <br>
 
     <br><p>Number of passes to teammates:</p>
     <input type="number" id="passes" name="quantity" min="0" max="100000000000" value="0"/> <br>
@@ -101,15 +101,19 @@
     </label><br><br>
 
     <p1>Traps:</p1><br>
-    <label class="switch">
+    <label class="switch"> <div class="btn-group-autoscores" role="group">
+        <label id="speakerAutoScores">Speaker Scores: 0</label>
+        /<button style="float: right;" type="button" class="btn btn-secondary" id="addAutoSpeaker">+</button>
+        <button style="float: right" type="button" class="btn btn-secondary" id="subAutoSpeaker">-</button>
+    </div>     
         <input type="checkbox" id="traps">
         <span class="slider round" onclick = "on_click()"></span>
     </label>
-    <input type="hidden" id="trapsNum" name="quantity" min="1" max="100000000000" value="0" >
+    <input type="hidden" id="numtraps" name="quantity" min="1" max="100000000000" value="0" >
     
     <script>
         function on_click(){
-            var y = document.getElementById("trapsNum");
+            var y = document.getElementById("numtraps");
             y.type= "number";
         }
     </script>
