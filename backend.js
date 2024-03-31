@@ -82,17 +82,15 @@
        
     }
     let jsobj = {}
-   
-    // JavaScript to handle toggle switch state change and display text accordingly
     
     function stepperCollect(id){
         jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
-        /**jsobj["autoamppoints"] = pluMinus(id, "autoamppoints")/6;
-        jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints")/6;
+        /**jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
+        jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints");
         jsobj["telespeakerpoints"] = pluMinus(id, "telespeakerpoints")/6;
-        jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints")/6;
-        jsobj["passes"] = pluMinus(id, "passespoints")/6;
-        jsobj["drops"] = pluMinus(id, "dropspoints")/6;*/
+        jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints");
+        jsobj["passes"] = pluMinus(id, "passespoints");
+        jsobj["drops"] = pluMinus(id, "dropspoints");*/
     }
     let hasBeenSubmitted = false;
     function collectData(){
@@ -100,8 +98,8 @@
         jsobj["teamnumber"] = getTextbox("teamnumber");
         if(getTextbox("teamnumber") == "" || getTextbox("matchnumber") == "" || getTextbox("scoutname") == ""){
             alert("please fill out team name, team number, and scout name");
-            //stops and breaks the function so that it 
-            //doesn't generate a no-team or no-match qr code.
+            //breaks the function so that it 
+            //doesn't generate a no-name, no-team or no-match qr code.
             return;
         }
 

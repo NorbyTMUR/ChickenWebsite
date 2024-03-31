@@ -118,18 +118,19 @@
 
     <p1>Traps:</p1><br>
     <label class="switch"> <div class="btn-group-autoscores" role="group">
-        <!--<label id="speakerAutoScores">Speaker Scores: 0</label>
-        /<button style="float: right;" type="button" class="btn btn-secondary" id="addAutoSpeaker">+</button>
-        <button style="float: right" type="button" class="btn btn-secondary" id="subAutoSpeaker">-</button>-->
+        
     </div>     
         <input type="checkbox" id="traps">
         <span class="slider round" onclick = "on_click()"></span>
     </label>
-    <input type="hidden" id="numtraps" name="quantity" min="1" max="100000000000" value="0" >
+    <button type="hidden" class="btn btn-primary" id="numtrapsplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="hidden" id="numtrapspoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
+    <button type="button" class="btn btn-primary" id="numtrapsminus" onclick = "stepperCollect(this.id)">-</button><br>
     
     <script>
         function on_click(){
-            var y = document.getElementById("numtraps");
+            var y = document.getElementById("numtrapspoints");
+            
             y.type= "number";
         }
     </script>
