@@ -3,6 +3,7 @@
     
     var blueAlliance = new Boolean(false);
     var redAlliance = new Boolean(false);
+    var qr;
     
     function redFunction() {
         redAlliance = true;
@@ -144,7 +145,7 @@
 
         console.log(JSON.stringify(jsobj))
         
-        var qr;
+       
 
         if(qr instanceof QRCode) {
             qr.clear();
