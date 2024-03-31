@@ -88,7 +88,6 @@
     function stepperCollect(id){
         jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
         /**jsobj["autoamppoints"] = pluMinus(id, "autoamppoints")/6;
-        //FOUND THE ISSUE: the error is that I'm calling all these things in the same thing aaa. Give them their individual ids, instead of id.
         jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints")/6;
         jsobj["telespeakerpoints"] = pluMinus(id, "telespeakerpoints")/6;
         jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints")/6;
