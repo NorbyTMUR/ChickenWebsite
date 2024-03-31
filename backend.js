@@ -29,9 +29,7 @@
 
     //use for checkbox class only
     function fnChecked(elementName) {
-        let isChecked = document.getElementById(elementName).checked;
-        console.log(isChecked);
-        return isChecked == true ? 1:0
+        return document.getElementById(elementName).checked;
     }
 
     function pluMinus(id, inputField){
@@ -40,7 +38,7 @@
         
         //let currentVal = document.getElementById().value;
         console.log("increment = " + increment )
-        if(increment == true){
+        if(increment){
             id = id.replace("plus","");
             let currentId = id + "points";
             currentVal = document.getElementById(currentId).value;
@@ -103,15 +101,27 @@
     function collectData(){
         //sets an alert if the important text fields aren't filled out.
         jsobj["teamnumber"] = getTextbox("teamnumber");
+        jsobj["matchnumber"] = getTextbox("matchnumber");
+        jsobj["scoutname"] = getTextbox("scoutname");
+        
+        if(blueAlliance && !redAlliance){
+            jsobj["alliance"] = "Blue";
+        }
+        else if (redAlliance && !blueAlliance){
+            jsobj["alliance"] = "Red";
+        }
+        else{
+            jsobj["alliance"] = null;
+        }
         if(getTextbox("teamnumber") == "" || getTextbox("matchnumber") == "" || getTextbox("scoutname") == ""){
             alert("please fill out team name, team number, and scout name");
             //breaks the function so that it 
             //doesn't generate a no-name, no-team or no-match qr code.
             return;
-        }
+        }        
 
-        jsobj["matchnumber"] = getTextbox("matchnumber");
-        jsobj["scoutname"] = getTextbox("scoutname");
+
+        
         
         //turns the blueAlliance/ redAlliance booleans into a string to match
         //the existing database.
@@ -129,26 +139,26 @@
         jsobj['autoleftzone'] = fnChecked("autoleftzone") *2;
         jsobj["autoamppoints"] = pointCounter("autoamppoints") * 2;
         jsobj["autospeakerpoints"] = pointCounter("autospeakerpoints") * 5;
+        jsobj['autoleftzone'] = fnChecked("autoleftzone");
         jsobj["teleamppoints"] = pointCounter("teleamppoints");
         jsobj["telespeakerpoints"] = pointCounter("telespeakerpoints") * 2;
         jsobj["telespeakeramplifiedpoints"] = pointCounter("telespeakeramplifiedpoints") * 5;
 
-        jsobj["passes"] = pointCounter("passespoints");
+        // jsobj["passes"] = pointCounter("passespoints"); This isn't in backend right now
         jsobj["drops"] = pointCounter("dropspoints");
 
-        jsobj["climbed"] = fnChecked("climbed") * 3;
+        jsobj["climbed"] = fnChecked("climbed");
         jsobj["parked"] = fnChecked("parked");
-        jsobj["traps"] = fnChecked("traps");
-        
-        jsobj["numtraps"] = pointCounter("numtrapspoints") * 5;
 
+        jsobj["traps"] = fnChecked("traps");
+        jsobj["numtraps"] = pointCounter("numtrapspoints");
         jsobj["offeredcoop"] = fnChecked("offeredcoop");
         jsobj["didcoop"] = fnChecked("didcoop");
         //add data point for harmony
         
-        jsobj["ampmike"] = fnChecked("ampmike");
-        jsobj["sourcemike"] = fnChecked("sourcemike");
-        jsobj["centermike"] = fnChecked("centermike");
+        jsobj["ampmike"] = fnChecked("ampmike") ? "Score" : "Miss";
+        jsobj["sourcemike"] = fnChecked("sourcemike") ? "Score" : "Miss";
+        jsobj["centermike"] = fnChecked("centermike") ? "Score" : "Miss";
 
         jsobj["extranotes"] = getTextbox("extranotes");
         
