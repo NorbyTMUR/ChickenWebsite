@@ -1,6 +1,6 @@
     //imported a qrcode library.
     src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
-    //also should input these booleans into the json
+    
     var blueAlliance = new Boolean(false);
     var redAlliance = new Boolean(false);
     
@@ -47,7 +47,12 @@
             id = id.replace("minus","");
             let currentId = id + "points";
             currentVal = document.getElementById(currentId).value;
-            currentVal--;
+            if(currentVal > 0){
+                currentVal--;
+            }
+            else{
+                currentVal = 0;
+            }
             document.getElementById(currentId).value =  currentVal;
             console.log("minus " +currentVal);
             return
@@ -79,33 +84,31 @@
     let jsobj = {}
    
     // JavaScript to handle toggle switch state change and display text accordingly
-    //increments by the multiplier (which is not correct). FIX THIS LATER.
-    function stepperCollect(){
-        jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
-        //FOUND THE ISSUE: the error is that I'm calling all these things in the same thing aaa. Give them their individual ids, instead of id.
-        jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints");
-        jsobj["telespeakerpoints"] = pluMinus(id, "telespeakerpoints");
-        jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints");
-        jsobj["passes"] = pluMinus(id, "passes");
-        jsobj["drops"] = pluMinus(id, "drops");
-    }
     
+    function stepperCollect(id){
+        jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
+        /**jsobj["autoamppoints"] = pluMinus(id, "autoamppoints")/6;
+        //FOUND THE ISSUE: the error is that I'm calling all these things in the same thing aaa. Give them their individual ids, instead of id.
+        jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints")/6;
+        jsobj["telespeakerpoints"] = pluMinus(id, "telespeakerpoints")/6;
+        jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints")/6;
+        jsobj["passes"] = pluMinus(id, "passespoints")/6;
+        jsobj["drops"] = pluMinus(id, "dropspoints")/6;*/
+    }
+    let hasBeenSubmitted = false;
     function collectData(){
         
-        
         jsobj["teamnumber"] = getTextbox("teamnumber");
-        if(getTextbox("teamnumber") == ""){
-            alert("please fill out all fields");
-        }
-        jsobj["matchnumber"] = getTextbox("matchnumber");
-        if(getTextbox("matchnumber") == ""){
-            alert("please fill out all fields");
+        if(getTextbox("teamnumber") == "" || getTextbox("matchnumber") == "" || getTextbox("scoutname") == ""){
+            alert("please fill out team name, team number, and scout name");
+            //stops and breaks the function so that it 
+            //doesn't generate a no-team or no-match qr code.
+            return;
         }
 
+        jsobj["matchnumber"] = getTextbox("matchnumber");
         jsobj["scoutname"] = getTextbox("scoutname");
-        if(getTextbox("scoutname") == ""){
-            alert("please fill out all fields");
-        }
+        
 
         if(blueAlliance ==true && redAlliance == false){
             jsobj["alliance"] = "blue";
@@ -124,15 +127,13 @@
         jsobj["telespeakerpoints"] = pointCounter("telespeakerpoints") * 2;
         jsobj["telespeakeramplifiedpoints"] = pointCounter("telespeakeramplifiedpoints") * 5;
 
-        jsobj["passes"] = pointCounter("passes");
-        jsobj["drops"] = pointCounter("drops");
+        jsobj["passes"] = pointCounter("passespoints");
+        jsobj["drops"] = pointCounter("dropspoints");
 
         jsobj["climbed"] = fnChecked("climbed") * 3;
         jsobj["parked"] = fnChecked("parked");
         jsobj["traps"] = fnChecked("traps");
-        //!!add bool harmony
-        //add trap bool
-        //add extranotes String!!
+        
         jsobj["numtraps"] = pointCounter("numtraps") * 5;
 
         jsobj["offeredcoop"] = fnChecked("offeredcoop");
@@ -146,11 +147,21 @@
 
         console.log(JSON.stringify(jsobj))
         
-        var qr = new QRCode("QRCode", JSON.stringify(jsobj));
-        
+        var qr;
+
+        if(qr instanceof QRCode) {
+            qr.clear();
+            qr.makeCode(JSON.stringify(jsobj));
+        }else {
+            qr = new QRCode("QRCode", JSON.stringify(jsobj));
+        }
+
         qr;
         
         console.log("Here I am on my own....");
+
+        hasBeenSubmitted = true;
+        
     }
 
    
