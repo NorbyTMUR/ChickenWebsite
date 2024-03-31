@@ -131,7 +131,7 @@
         jsobj["parked"] = fnChecked("parked");
         jsobj["traps"] = fnChecked("traps");
         
-        jsobj["numtraps"] = pointCounter("numtraps") * 5;
+        jsobj["numtraps"] = pointCounter("numtrapspoints") * 5;
 
         jsobj["offeredcoop"] = fnChecked("offeredcoop");
         jsobj["didcoop"] = fnChecked("didcoop");
