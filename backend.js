@@ -4,6 +4,11 @@
     var blueAlliance = new Boolean(false);
     var redAlliance = new Boolean(false);
     var qr;
+
+    //TODO: include harmony was achieved/not
+    //unhide the trap score or hide the buttons with it
+    //add a reset for everything except for the scout name after every submission
+    //refactor the data options so they match the database exactly
     
     function redFunction() {
         redAlliance = true;
@@ -93,9 +98,10 @@
         jsobj["passes"] = pluMinus(id, "passespoints");
         jsobj["drops"] = pluMinus(id, "dropspoints");*/
     }
-    let hasBeenSubmitted = false;
+    
+    // 
     function collectData(){
-        
+        //sets an alert if the important text fields aren't filled out.
         jsobj["teamnumber"] = getTextbox("teamnumber");
         if(getTextbox("teamnumber") == "" || getTextbox("matchnumber") == "" || getTextbox("scoutname") == ""){
             alert("please fill out team name, team number, and scout name");
@@ -107,7 +113,8 @@
         jsobj["matchnumber"] = getTextbox("matchnumber");
         jsobj["scoutname"] = getTextbox("scoutname");
         
-
+        //turns the blueAlliance/ redAlliance booleans into a string to match
+        //the existing database.
         if(blueAlliance ==true && redAlliance == false){
             jsobj["alliance"] = "blue";
         }
@@ -118,6 +125,7 @@
             jsobj["alliance"] = "not selected";
         }
 
+        //adds the properties to the js object, along with adding point values.
         jsobj['autoleftzone'] = fnChecked("autoleftzone") *2;
         jsobj["autoamppoints"] = pointCounter("autoamppoints") * 2;
         jsobj["autospeakerpoints"] = pointCounter("autospeakerpoints") * 5;
@@ -136,30 +144,25 @@
 
         jsobj["offeredcoop"] = fnChecked("offeredcoop");
         jsobj["didcoop"] = fnChecked("didcoop");
+        //add data point for harmony
         
         jsobj["ampmike"] = fnChecked("ampmike");
         jsobj["sourcemike"] = fnChecked("sourcemike");
         jsobj["centermike"] = fnChecked("centermike");
 
         jsobj["extranotes"] = getTextbox("extranotes");
-
-        console.log(JSON.stringify(jsobj))
         
-       
-
+        // turns json object into a string (qr codes only take strings).
+        jsonstr =JSON.stringify(jsobj)
+        console.log(jsonstr)
+        
+        //Curtis's qrcode generator - clears previous qr codes.
         if(qr instanceof QRCode) {
             qr.clear();
-            qr.makeCode(JSON.stringify(jsobj));
-        }else {
-            qr = new QRCode("QRCode", JSON.stringify(jsobj));
-        }
-
-        qr;
-        
-        console.log("Here I am on my own....");
-
-        hasBeenSubmitted = true;
-        
+            qr.makeCode(jsonstr);
+        } else {
+            qr = new QRCode("QRCode", jsonstr);
+        }        
     }
 
    
