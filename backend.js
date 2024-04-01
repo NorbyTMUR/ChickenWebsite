@@ -6,7 +6,6 @@
     var qr;
 
     //TODO: 
-    //add a reset for everything except for the scout name after every submission
     //check that the options match the database exactly
     //add good comments
     
@@ -32,7 +31,7 @@
         return document.getElementById(elementName).checked;
     }
 
-    function pluMinus(id, inputField){
+    function stepperCollect(id){
         //let increment = document.getElementById(id);
         let increment = id.includes("plus");
         
@@ -91,7 +90,7 @@
         return pts;
     }
     
-    function getTextbox(name){
+    function getTextInput(name){
         let input = document.getElementById(name).value;
         if(input == undefined){
             input = ""; 
@@ -99,24 +98,22 @@
         return input;
        
     }
-    let jsobj = {}
-    
-    function stepperCollect(id){
-        jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
-        /**jsobj["autoamppoints"] = pluMinus(id, "autoamppoints");
-        jsobj["autospeakerpoints"] = pluMinus(id, "autospeakerpoints");
-        jsobj["telespeakerpoints"] = pluMinus(id, "telespeakerpoints")/6;
-        jsobj["telespeakeramplifiedpoints"] = pluMinus(id, "telespeakeramplifiedpoints");
-        jsobj["passes"] = pluMinus(id, "passespoints");
-        jsobj["drops"] = pluMinus(id, "dropspoints");*/
+
+    function getNumberInput(id){
+        let input = document.getElementById(id).value;
+        if(input == null){
+            input = 0;
+        }
+        return input;
     }
+    let jsobj = {}
     
     // 
     function collectData(){
         //sets an alert if the important text fields aren't filled out.
-        jsobj["teamnumber"] = getTextbox("teamnumber");
-        jsobj["matchnumber"] = getTextbox("matchnumber");
-        jsobj["scoutname"] = getTextbox("scoutname");
+        jsobj["scoutname"] = getTextInput("scoutname");
+        jsobj["teamnumber"] = JSON.parse(getNumberInput("teamnumber"));
+        jsobj["matchnumber"] = JSON.parse(getNumberInput("matchnumber"));
         
         if(blueAlliance && !redAlliance){
             jsobj["alliance"] = "Blue";
@@ -127,7 +124,7 @@
         else{
             jsobj["alliance"] = null;
         }
-        if(getTextbox("teamnumber") == "" || getTextbox("matchnumber") == "" || getTextbox("scoutname") == ""){
+        if(getNumberInput("teamnumber") == 0 || getNumberInput("matchnumber") == 0 || getTextInput("scoutname") == ""){
             alert("please fill out team name, team number, and scout name");
             //breaks the function so that it 
             //doesn't generate a no-name, no-team or no-match qr code.
@@ -170,7 +167,7 @@
         jsobj["sourcemike"] = fnChecked("sourcemike") ? "Score" : "Miss";
         jsobj["centermike"] = fnChecked("centermike") ? "Score" : "Miss";
 
-        jsobj["extranotes"] = getTextbox("extranotes");
+        jsobj["extranotes"] = getTextInput("extranotes");
         
         // turns json object into a string (qr codes only take strings).
         jsonstr =JSON.stringify(jsobj)

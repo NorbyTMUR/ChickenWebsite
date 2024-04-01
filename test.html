@@ -15,19 +15,19 @@
 </head>
 
 <body>
-    <!--TODO: actually set up accounts with postgresql (last priority)-->
-    <label for="scoutname">Scout Name:</label>
-    <input type="text" id="scoutname" name="name" required minlength="0" maxlength="246" size="10" />
-    <br>
-
-    <label for="teamnumber">Team Number Scouted:</label>
-
-    <input type="text" id="teamnumber" name="name" required minlength="0" maxlength="246" size="10" />
-    <br>
-    <label for="matchnumber">Match Number:</label>
-    <input type="text" id="matchnumber" name="quantity" required minlength="0" maxlength="246" size="10"/>
-    
-
+    <!--look into bootstrap grid-->
+    <div class = "text-input">
+        <label for="scoutname">Scout Name:</label>
+        <input type="text" id="scoutname" name="name" required minlength="0" maxlength="300" size="40" />
+    </div>
+    <div class = "number-input">
+        <label for="teamnumber">Team Number Scouted:</label>
+        <input type="number" id="teamnumber" name="name" required min = "0" max = "100000" size="10" oninput = "validity.valid || (value='');"/>
+    </div>
+    <div class = "number-input">
+        <label for="matchnumber">Match Number:</label>
+        <input type="number" id="matchnumber" name="name" required min = "0" max = "100000" size="10"  oninput = "validity.valid || (value='');"/>
+      </div>
     <br><br>
 
 

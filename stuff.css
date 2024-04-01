@@ -22,6 +22,14 @@
     height: 0;
 }
 
+.text-input {
+    padding: 10px;
+}
+
+.number-input{
+    padding: 10px;
+
+}
 /* The slider */
 .slider {
     position: absolute;
