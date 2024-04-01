@@ -111,19 +111,6 @@
     // 
     function collectData(){
         //sets an alert if the important text fields aren't filled out.
-        jsobj["scoutname"] = getTextInput("scoutname");
-        jsobj["teamnumber"] = JSON.parse(getNumberInput("teamnumber"));
-        jsobj["matchnumber"] = JSON.parse(getNumberInput("matchnumber"));
-        
-        if(blueAlliance && !redAlliance){
-            jsobj["alliance"] = "Blue";
-        }
-        else if (redAlliance && !blueAlliance){
-            jsobj["alliance"] = "Red";
-        }
-        else{
-            jsobj["alliance"] = null;
-        }
         if(getNumberInput("teamnumber") == 0 || getNumberInput("matchnumber") == 0 || getTextInput("scoutname") == ""){
             alert("please fill out team name, team number, and scout name");
             //breaks the function so that it 
@@ -131,16 +118,19 @@
             return;
         }        
         
+        jsobj["scoutname"] = getTextInput("scoutname");
+        jsobj["teamnumber"] = JSON.parse(getNumberInput("teamnumber"));
+        jsobj["matchnumber"] = JSON.parse(getNumberInput("matchnumber"));
         //turns the blueAlliance/ redAlliance booleans into a string to match
         //the existing database.
         if(blueAlliance ==true && redAlliance == false){
-            jsobj["alliance"] = "blue";
+            jsobj["alliance"] = "Blue";
         }
         else if (redAlliance == true && blueAlliance == false){
-            jsobj["alliance"] = "red";
+            jsobj["alliance"] = "Red";
         }
         else{
-            jsobj["alliance"] = "not selected";
+            jsobj["alliance"] = "Select";
         }
 
         //adds the properties to the js object, along with adding point values.
@@ -209,6 +199,12 @@
         resetCheckbox("sourcemike")
         resetCheckbox("centermike");
         resetTextbox("extranotes");
+    }
+
+    let pitjsobj = {}
+    function collectPitData(){
+        pitjsobj["scoutname"] = getTextInput("scoutname");
+        
     }
 
    

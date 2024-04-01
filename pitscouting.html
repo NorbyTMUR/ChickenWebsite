@@ -21,8 +21,20 @@
     <title>Chicken Scouting</title>
 </head>
 
-<!--let team_num;
-let scoutname;
+<div class = "text-input">
+    <label for="scoutname">Scout Name:</label>
+    <input type="text" id="scoutname" name="name" required minlength="0" maxlength="300" size="40" />
+</div>
+
+<div class = "number-input">
+    <label for="teamnumber">Team Number Scouted:</label>
+    <input type="number" id="teamnumber" name="name" required min = "0" max = "100000" size="10" oninput = "validity.valid || (value='');"/>
+</div>
+
+
+
+<!--//let team_num;
+//let scoutname;
 let drive_type;
 let intake_type;
 let defense;
