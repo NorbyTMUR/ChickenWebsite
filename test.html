@@ -91,11 +91,6 @@
     <input type="number" id="telespeakeramplifiedpoints" name="quantity" min="0" max="100000000000" value="0" disabled/>
     <button type="button" class="btn btn-primary" id="telespeakeramplifiedminus" onclick = "stepperCollect(this.id)">-</button><br>
 
-    <br><p>Number of passes to teammates:</p>
-    <button type="button" class="btn btn-primary" id="passesplus" onclick = "stepperCollect(this.id)">+</button>
-    <input type="number" id="passespoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
-    <button type="button" class="btn btn-primary" id="passesminus" onclick = "stepperCollect(this.id)">-</button>
-
     <br><p>Drops:</p>
     <button type="button" class="btn btn-primary" id="dropsplus" onclick = "stepperCollect(this.id)">+</button>
     <input type="number" id="dropspoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
@@ -121,10 +116,10 @@
         
     </div>     
         <input type="checkbox" id="traps">
-        <span class="slider round" onclick = "on_click()"></span>
+        <span class="slider round"></span>
     </label>
     <button type="button" class="btn btn-primary" id="numtrapsplus" onclick = "stepperCollect(this.id)">+</button>
-    <input type="hidden" id="numtrapspoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
+    <input type="number" id="numtrapspoints" name="quantity" min="0" max="100000000000" value="0" disabled/> 
     <button type="button" class="btn btn-primary" id="numtrapsminus" onclick = "stepperCollect(this.id)">-</button><br>
     
     <script>
@@ -148,6 +143,12 @@
         <span class="slider round"></span>
     </label><br><br>
 
+    <p1>Harmony:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="harmony">
+        <span class="slider round"></span>
+    </label><br><br>
+
     <p1>Amp Mike:</p1><br>
     <label class="switch">
         <input type="checkbox" id="ampmike">
@@ -166,13 +167,12 @@
         <span class="slider round"></span>
     </label>
     <br><br>
-    <label for="extranotes">Extra Notes:</label>
-    <input type="text" id="extranotes" name="name" required minlength="0" maxlength="246" size="10" />
+    <label for="extranotes">Extra Notes:</label><br>
+    <input class = "bigTextbox" type="text" id="extranotes" name="name" required minlength="0" maxlength="246" size="10" />
     <br><br>
-    <b><p3>Reload the page after submission.</p3></b>
     <br><br>
     <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit (Generate QR Code)</button>
-    
+
     <br><br><div id="QRCode"></div><br><br>
 
 </div>

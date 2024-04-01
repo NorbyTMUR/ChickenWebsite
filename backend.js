@@ -5,10 +5,10 @@
     var redAlliance = new Boolean(false);
     var qr;
 
-    //TODO: include harmony was achieved/not
-    //unhide the trap score or hide the buttons with it
+    //TODO: 
     //add a reset for everything except for the scout name after every submission
-    //refactor the data options so they match the database exactly
+    //check that the options match the database exactly
+    //add good comments
     
     function redFunction() {
         redAlliance = true;
@@ -64,6 +64,20 @@
         console.log("wth " + currentVal);
     }
 
+    function resetPluMinus(id){
+        document.getElementById(id).value =  0;
+    }
+
+    function resetTextbox(id){
+        document.getElementById(id).value =  '';
+    }
+
+    function resetCheckbox(id){
+        if(document.getElementById(id) == null){}
+        else{
+            document.getElementById(id).checked = false;
+        }
+    }
     /**
      * @precondition takes a string name
      */
@@ -119,9 +133,6 @@
             //doesn't generate a no-name, no-team or no-match qr code.
             return;
         }        
-
-
-        
         
         //turns the blueAlliance/ redAlliance booleans into a string to match
         //the existing database.
@@ -139,7 +150,6 @@
         jsobj['autoleftzone'] = fnChecked("autoleftzone") *2;
         jsobj["autoamppoints"] = pointCounter("autoamppoints") * 2;
         jsobj["autospeakerpoints"] = pointCounter("autospeakerpoints") * 5;
-        jsobj['autoleftzone'] = fnChecked("autoleftzone");
         jsobj["teleamppoints"] = pointCounter("teleamppoints");
         jsobj["telespeakerpoints"] = pointCounter("telespeakerpoints") * 2;
         jsobj["telespeakeramplifiedpoints"] = pointCounter("telespeakeramplifiedpoints") * 5;
@@ -154,8 +164,8 @@
         jsobj["numtraps"] = pointCounter("numtrapspoints");
         jsobj["offeredcoop"] = fnChecked("offeredcoop");
         jsobj["didcoop"] = fnChecked("didcoop");
-        //add data point for harmony
-        
+
+        jsobj["harmony"] = fnChecked("harmony");
         jsobj["ampmike"] = fnChecked("ampmike") ? "Score" : "Miss";
         jsobj["sourcemike"] = fnChecked("sourcemike") ? "Score" : "Miss";
         jsobj["centermike"] = fnChecked("centermike") ? "Score" : "Miss";
@@ -172,7 +182,36 @@
             qr.makeCode(jsonstr);
         } else {
             qr = new QRCode("QRCode", jsonstr);
-        }        
+        }
+        
+        //resetting everything except the scout's names.
+        resetTextbox("matchnumber");
+        resetTextbox("teamnumber");
+        //resetting the alliance buttons
+        blueAlliance = false;
+        redAlliance = false;
+        document.getElementById("allianceRed").innerHTML = "Red";
+        document.getElementById("allianceBlue").innerHTML = "Blue";
+        //resetting everything else
+        resetCheckbox("autoleftzone");
+        resetPluMinus("autoamppoints");
+        resetPluMinus("autospeakerpoints");
+        resetPluMinus("teleamppoints");
+        resetPluMinus("telespeakerpoints");
+        resetPluMinus("telespeakeramplifiedpoints");
+        resetPluMinus("dropspoints");
+
+        resetCheckbox("climbed");
+        resetCheckbox("parked");
+        resetCheckbox("traps");
+        resetPluMinus("numtrapspoints");
+        resetCheckbox("offeredcoop");
+        resetCheckbox("didcoop");
+        resetCheckbox("harmony");
+        resetCheckbox("ampmike");
+        resetCheckbox("sourcemike")
+        resetCheckbox("centermike");
+        resetTextbox("extranotes");
     }
 
    
