@@ -14,12 +14,22 @@
     <title>Chicken Scouting</title>
 </head>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="topnav" id="myTopnav">
+  <a href="matchscouting.html" class="active">Match Scouting</a>
+  <a href="pitscouting.html">Pit Scouting</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  </a>
+</div>
+
 <body>
     <!--look into bootstrap grid-->
     <div class = "text-input">
         <label for="scoutname">Scout Name:</label>
         <input type="text" id="scoutname" name="name" required minlength="0" maxlength="300" size="40" />
     </div>
+    <!--add pit scouting-->
     <div class = "number-input">
         <label for="teamnumber">Team Number Scouted:</label>
         <input type="number" id="teamnumber" name="name" required min = "0" max = "100000" size="10" oninput = "validity.valid || (value='');"/>
