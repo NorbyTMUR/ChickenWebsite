@@ -1,6 +1,6 @@
     //imported a qrcode library.
     src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
-    
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" 
     var blueAlliance = new Boolean(false);
     var redAlliance = new Boolean(false);
     var qr;
@@ -132,7 +132,7 @@
         else{
             jsobj["alliance"] = "Select";
         }
-
+        jsobj['password'] = "chick"
         //adds the properties to the js object, along with adding point values.
         jsobj['autoleftzone'] = fnChecked("autoleftzone") *2;
         jsobj["autoamppoints"] = pointCounter("autoamppoints") * 2;
@@ -171,6 +171,9 @@
             qr = new QRCode("QRCode", jsonstr);
         }
         
+        //TODO API:
+        // need password to database, need url --> find the rest API from the backend, 
+
         //resetting everything except the scout's names.
         resetTextbox("matchnumber");
         resetTextbox("teamnumber");
@@ -199,12 +202,23 @@
         resetCheckbox("sourcemike")
         resetCheckbox("centermike");
         resetTextbox("extranotes");
+
+        
+          $.get("https://anjalijayanti-1.tiiny.site/", (data, status) => {
+            console.log(data);
+          });
+          //check over the names again so I don't crash their database
+            //get the backend url for posting  (RESTAPI), replace team_url   
+          $.post("https://team_url/v1/"+getNumberInput("teamnumber")+"/data/stand", jsonstr, (data, status) => {
+            console.log(data);
+          });
+        
     }
 
     let pitjsobj = {}
     function collectPitData(){
         pitjsobj["scoutname"] = getTextInput("scoutname");
-        
+
     }
 
    
