@@ -207,22 +207,24 @@
     let pitjsobj = {}
     function collectPitData(){
         pitjsobj["scoutname"] = getTextInput("scoutname");
-        
+        pitjsobj["teamnumber"] = getNumberInput("teamnumber")
 
         //testing working with jquery
         $.get("https://anjalijayanti-1.tiiny.site/", (data, status) => {
             console.log(data);
           });
-          //check over the names again so I don't crash their database
+         
+        $.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", pitjsonstr, (data, status) => {
+            console.log(data);
+        });
+    }
+
+     //check over the names again so I don't crash their database
             //get the backend url for posting  (RESTAPI), replace team_url  
             //
           /**$.post("https://team_url/v1/"+getNumberInput("teamnumber")+"/data/stand", jsonstr, (data, status) => {
             console.log(data);
           });*/
 
-        $.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", jsonstr, (data, status) => {
-            console.log(data);
-        });
-    }
 
    
