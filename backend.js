@@ -44,7 +44,7 @@
             currentVal++;
             document.getElementById(currentId).value =  currentVal;
             console.log("plus " +currentVal);
-            return
+            
         }
         else{
             id = id.replace("minus","");
@@ -58,9 +58,9 @@
             }
             document.getElementById(currentId).value =  currentVal;
             console.log("minus " +currentVal);
-            return
+            
         }
-        console.log("wth " + currentVal);
+    
     }
 
     function resetPluMinus(id){
@@ -106,10 +106,11 @@
         }
         return input;
     }
-    let jsobj = {}
     
     // 
     function collectData(){
+        let jsobj = {}
+    
         //sets an alert if the important text fields aren't filled out.
         if(getNumberInput("teamnumber") == 0 || getNumberInput("matchnumber") == 0 || getTextInput("scoutname") == ""){
             alert("please fill out team name, team number, and scout name");
@@ -140,8 +141,6 @@
         jsobj["teleamppoints"] = pointCounter("teleamppoints");
         jsobj["telespeakerpoints"] = pointCounter("telespeakerpoints") * 2;
         jsobj["telespeakeramplifiedpoints"] = pointCounter("telespeakeramplifiedpoints") * 5;
-
-        // jsobj["passes"] = pointCounter("passespoints"); This isn't in backend right now
         jsobj["drops"] = pointCounter("dropspoints");
 
         jsobj["climbed"] = fnChecked("climbed");
@@ -204,19 +203,65 @@
         resetTextbox("extranotes");  
     }
 
-    let pitjsobj = {}
+    
+    function getDropdown(dropdownId) {
+       let dropdown = document.getElementById(dropdownId);
+       // get the index of the selected option
+       //let selectedIndex = dropdown.selectedIndex;
+       // get a selected option and text value using the text property
+       return dropdown.options[dropdown.selectedIndex].text;
+    }
+
     function collectPitData(){
+
+
+        let pitjsobj = {}
         pitjsobj["scoutname"] = getTextInput("scoutname");
-        pitjsobj["teamnumber"] = getNumberInput("teamnumber")
+        pitjsobj["teamnumber"] = getNumberInput("teamnumber");
+        pitjsobj["drivetype"] = getDropdown("drivetrain");
+        pitjsobj["intake"] = getDropdown("intake");
+        let bestAuto ="";
+        for(let i=0; i<stepperCollect("bestautospeaker");i++){
+            bestAuto += "Speaker ";
+        }
+        for(let j=0; j<stepperCollect("bestautospeaker");j++){
+            bestAuto += "Amp ";
+        }
+
+        pitjsobj["bestauto"] = bestAuto;
+        if(fnChecked("defense")==true){
+            pitjsobj["defense"] = "yes";
+        }
+        else{
+            pitjsobj["defense"] = "no";
+        }
+
+        pitjsobj["speaker"] = fnChecked("speaker");
+        pitjsobj["amp"] = fnChecked("amp");
+        pitjsobj["harmony"] = fnChecked("harmony");
+        pitjsobj["understage"] = fnChecked("understage");
+        pitjsobj["trap"] = fnChecked("trap");
+
+        if(fnChecked("humanplayer")==true){
+            pitjsobj["humanplayer"] = "yes";
+        }
+        else{
+            pitjsobj["humanplayer"] = "no";
+        }
+
+        pitjsobj["extranotes"] = getTextInput("extranotes");
+
+        pitjsonstr =JSON.stringify(pitjsobj)
+        console.log(pitjsonstr);
 
         //testing working with jquery
-        $.get("https://anjalijayanti-1.tiiny.site/", (data, status) => {
+        /**$.get("https://anjalijayanti-1.tiiny.site/", (data, status) => {
             console.log(data);
           });
          
-        $.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", pitjsonstr, (data, status) => {
+        /**$.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", pitjsonstr, (data, status) => {
             console.log(data);
-        });
+        });*/
     }
 
      //check over the names again so I don't crash their database

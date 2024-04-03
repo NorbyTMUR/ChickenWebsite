@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="stuff.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"> </script> 
+    <script src="backend.js"></script>
+    <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Scouting</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon (1).ico">
+</head>
 <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -31,33 +45,103 @@
     <input type="number" id="teamnumber" name="name" required min = "0" max = "100000" size="10" oninput = "validity.valid || (value='');"/>
 </div>
 
+<div class="container">
+    <!--idk if these are the right strings-->
+<b><p>Drivetrain:</p></b>
+    <select id = "drivetrain" onchange = "getDropdown(this.id)">
+    <option>Select</option>
+    <option>Omni</option>
+    <option>Mecanum</option>
+    <option>Swerve</option>
+    <option>Tank</option>
+    </select>
+    <br><br>
+<!--idk intake types-->
+<b><p>Intake:</p></b>
+    <select id = "intake" onchange = "getDropdown(this.id)">
+    <option>Select</option>
+    <option>Omni</option>
+    <option>Mecanum</option>
+    <option>Swerve</option>
+    <option>Tank</option>
+    </select>
+    <br><br><br>
 
+    <b><p>Best auto:</p></b><br>
+    <p2>Speaker:</p2>
+    <button type="button" class="btn btn-primary" id="bestautospeakerplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="number" id="bestautospeakerpoints" name="quantity" min="0" max="100000000000" value="0" disabled/>
+    <button type="button" class="btn btn-primary" id="bestautospeakerminus" onclick = "stepperCollect(this.id)">-</button> <br>
+    <br><br>
 
-<!--//let team_num;
-//let scoutname;
-let drive_type;
-let intake_type;
-let defense;
-let speaker;
-let climb = Boolean;
-let best_auto = String;
-let harmony = Boolean;
-let understage = Boolean;
-let trap = Boolean;
-let extra_notes = String;-->
+    <p2>Amp:</p2>
+    <button type="button" class="btn btn-primary" id="bestautoampplus" onclick = "stepperCollect(this.id)">+</button>
+    <input type="number" id="bestautoamppoints" name="quantity" min="0" max="100000000000" value="0" disabled/>
+    <button type="button" class="btn btn-primary" id="bestautoampminus" onclick = "stepperCollect(this.id)">-</button> <br>
+    <br><br>
 
+    <b><p1>Willing to do defense:</p1><br></b>
+    <label class="switch">
+        <input type="checkbox" id="defense">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <b><p1>Can do Speaker:</p1><br></b>
+    <label class="switch">
+        <input type="checkbox" id="speaker">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <b><p1>Can do Amp:</p1><br></b>
+    <label class="switch">
+        <input type="checkbox" id="amp">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <b><p1>Can do harmony:</p1><br></b>
+    <label class="switch">
+        <input type="checkbox" id="harmony">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <b><p1>Can go under stage:</p1><br></b>
+    <label class="switch">
+        <input type="checkbox" id="understage">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <b><p1>Can do trap:</p1><br></b>
+    <label class="switch">
+        <input type="checkbox" id="trap">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <b><p1>Human Player is Accurate?</p1><br></b>
+    <label class="switch">
+        <input type="checkbox" id="humanplayer">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <label for="extranotes">Extra Notes:</label><br>
+    <input class = "bigTextbox" type="text" id="extranotes" name="name" required minlength="0" maxlength="246" size="10" />
+    <br><br>
+    <br><br>
+    <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectPitData()">Submit</button>
+
+</div>
 <!--teamnumber (String), 
     scoutname (String), 
-    drivetype (String), 
-    intake (String), 
-    bestauto (String), 
+    //drivetype (String), 
+    //intake (String), 
+    //bestauto (String), 
     defense (String), 
+
     speaker (bool), 
     amp (bool), 
     climb (bool), 
     harmony (bool), 
     understage (bool), 
     trap (bool),
-    humanplayer (String), 
+    //humanplayer (String), 
     extranotes (String)-->
 
