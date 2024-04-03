@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="stuff.css">
+    
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"> </script> 
+    <script src="backend.js"></script>
+    <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Scouting</title>
+</head>
+
+<body>
+    <!--TODO: actually set up accounts with postgresql (last priority)-->
+    <label for="scoutName">Scout Name:</label>
+    <input type="text" id="scoutName" name="name" required minlength="0" maxlength="246" size="10" />
+    <br>
+
+    <label for="teamNum">Team Number Scouted:</label>
+
+    <input type="text" id="teamNum" name="name" required minlength="0" maxlength="246" size="10" />
+    <br>
+    <label for="matchNum">Match Number:</label>
+    <input type="text" id="matchNum" name="quantity" required minlength="0" maxlength="246" size="10"/>
+    
+
+    <br><br>
+<h8>Please do not type in the fields. Instead, use the steppers on the sides.</h8><br><br>
+    
+<div class="container">
+    <h3>Alliance</h3>
+    <div class="btn-group" role="group">
+         
+        <button input type="radio" type="button" value="blue" class="btn btn-primary" id="allianceBlue"><!--Blue</button>-->
+        <label for="b">Blue</label>
+        <button input type="radio" type="button" value ="red" class="btn btn-danger" id="allianceRed">
+        <label for="r">Red</label>
+
+        <script>
+            allianceBlue.addEventListener("click", blueFunction);
+            allianceRed.addEventListener("click", redFunction);
+        </script>
+        
+        
+    </div><br>
+
+</div>
+  </body>
+    <br><br>
+
+    <div class="container">
+        <h2>Auto</h2>
+        <p>Left zone:</p>
+        <label class="switch">
+            <input type="checkbox" id="leftZone">
+            <span class="slider round"></span>
+        </label>
+
+        <!--<br><br><p>Amp:</p>-->
+        <div class="btn-group-autoamsp" role="group">
+            <label id="ampAutoScores">Amp: 0</label>
+            <button style="float: right;" type="button" class="btn btn-secondary" id="addAutoSpeaker">+</button>
+            <button style="float: right" type="button" class="btn btn-secondary" id="subAutoSpeaker">-</button>
+        </div>     
+        <input type="number" id="autoAmpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+        <br><p>Speaker:</p>
+        <input type="number" id="autoSpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    </div>
+
+<div class="container">
+    <br><br><h2>Teleop</h2>
+
+    <br><p>Amp:</p>
+    <input type="number" id="teleAmpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+
+    <br><p>Speaker (unamplified):</p>
+    <input type="number" id="teleSpPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+
+    <br><p>Speaker (amplified):</p>
+    <input type="number" id="teleSpAmplifiedPts" name="quantity" min="0" max="100000000000" value="0"/> <br>
+
+    <br><p>Number of passes to teammates:</p>
+    <input type="number" id="passes" name="quantity" min="0" max="100000000000" value="0"/> <br>
+
+    <br><p>Drops:</p>
+    <input type="number" id="drops" name="quantity" min="0" max="100000000000" value="0"/> <br>
+    
+</div><br><br>
+<div class="container">
+    <h2>Endgame</h2><br>
+
+    <p1>Climbed:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="climbed">
+        <span class="slider round"></span>
+    </label><br><br>
+    <p1>Parked:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="parked">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <p1>Traps:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="traps">
+        <span class="slider round" onclick = "on_click()"></span>
+    </label>
+    <input type="hidden" id="trapsNum" name="quantity" min="1" max="100000000000" value="0" >
+    
+    <script>
+        function on_click(){
+            var y = document.getElementById("trapsNum");
+            y.type= "number";
+        }
+    </script>
+    <br><br>
+
+    <p1>Offered co-op:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="offeredcoop">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <p1>Did Co-op:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="didcoop">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <p1>Amp Mike:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="ampmike">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <p1>Source Mike:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="sourcemike">
+        <span class="slider round"></span>
+    </label><br><br>
+
+    <p1>Center Mike:</p1><br>
+    <label class="switch">
+        <input type="checkbox" id="centermike">
+        <span class="slider round"></span>
+    </label>
+    <br><br>
+    <p3>To prevent a qrcode wall, reload the page</p3>
+    <br><br>
+    <button type="button" class="btn btn-primary" id="submitBtn" onclick = "collectData()">Submit (Generate QR Code)</button>
+    
+
+    
+    <br><br><div id="QRCode"></div><br><br>
+
+</div>
+<div id="root"></div>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
