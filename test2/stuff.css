@@ -30,10 +30,6 @@
     }
   }
 
-.container {
-    left:30px;
-}
-
 .bigTextbox {
     width: 300px;
     height:100px;
@@ -117,6 +113,14 @@ input:checked + .slider:before {
     background-color: #d866d2;
     padding: 14px 28px;
     font-size: 16px;
-    cursor: pointer;
+    text-decoration: none;
     text-align: center;
   }
+
+.goodclass {
+    padding: 10px;
+}
+
+.ginter {
+    cursor: default;
+}
