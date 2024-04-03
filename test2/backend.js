@@ -219,11 +219,12 @@
         pitjsobj["teamnumber"] = getNumberInput("teamnumber");
         pitjsobj["drivetype"] = getDropdown("drivetrain");
         pitjsobj["intake"] = getDropdown("intake");
+
         let bestAuto ="";
-        for(let i=0; i<stepperCollect("bestautospeaker");i++){
+        for(let i=0; i<document.getElementById("bestautospeakerpoints").value;i++){
             bestAuto += "Speaker, ";
         }
-        for(let j=0; j<stepperCollect("bestautospeaker");j++){
+        for(let j=0; j<document.getElementById("bestautoamppoints").value;j++){
             bestAuto += "Amp, ";
         }
 
@@ -241,32 +242,28 @@
         pitjsobj["understage"] = fnChecked("understage");
         pitjsobj["trap"] = fnChecked("trap");
 
-        if(fnChecked("humanplayer")){
-            pitjsobj["humanplayer"] = "High";
-        }
-        else{
-            pitjsobj["humanplayer"] = "Low";
-        }
-
+       pitjsobj["humanplayer"] = getDropdown("humanplayer");
         pitjsobj["extranotes"] = getTextInput("extranotes");
 
         pitjsonstr =JSON.stringify(pitjsobj)
         console.log(pitjsonstr);
 
-        //testing working with jquery
-        /**$.get("https://anjalijayanti-1.tiiny.site/", (data, status) => {
-            console.log(data);
-          });
+        
          
-        /**$.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", pitjsonstr, (data, status) => {
+       /** $.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", pitjsonstr, (data, status) => {
             console.log(data);
-        });*/
+        }); */
     }
 
      //check over the names again so I don't crash their database
             //get the backend url for posting  (RESTAPI), replace team_url  
             //
-          /**$.post("https://team_url/v1/"+getNumberInput("teamnumber")+"/data/stand", jsonstr, (data, status) => {
+          /**testing working with jquery
+        $.get("https://anjalijayanti-1.tiiny.site/", (data, status) => {
+            console.log(data);
+          });
+           * 
+           * $.post("https://team_url/v1/"+getNumberInput("teamnumber")+"/data/stand", jsonstr, (data, status) => {
             console.log(data);
           });*/
 

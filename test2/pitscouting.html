@@ -22,13 +22,8 @@
 <div class="topnav" id="myTopnav">
     <a href="matchscouting.html" class="active">Match Scouting</a>
     <a href="pitscouting.html">Pit Scouting</a>
-    <a> </a>
-    <a> </a>
-    <a> </a>
-    <a> </a>
-    <a> </a>
-    <a href="ginter.html"> </a>
-    </a>
+    <a href="ginter.html"> Mystery </a>
+    
 </div>
 
 <head>
@@ -143,12 +138,13 @@
     </label><br><br>
 
     <b>
-        <p1>Human Player is Accurate?</p1><br>
-    </b>
-    <label class="switch">
-        <input type="checkbox" id="humanplayer">
-        <span class="slider round"></span>
-    </label><br><br>
+        <b><p>Human Player Abilities:</p></b>
+    <select id = "humanplayer" onchange = "getDropdown(this.id)">
+        <option>Low</option>
+        <option>Med</option>
+        <option>High</option>
+    </select>
+    <br><br>
 
     <label for="extranotes">Extra Notes:</label><br>
     <input class="bigTextbox" type="text" id="extranotes" name="name" required minlength="0" maxlength="246"
