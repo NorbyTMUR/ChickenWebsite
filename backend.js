@@ -221,10 +221,10 @@
         pitjsobj["intake"] = getDropdown("intake");
         let bestAuto ="";
         for(let i=0; i<stepperCollect("bestautospeaker");i++){
-            bestAuto += "Speaker ";
+            bestAuto += "Speaker, ";
         }
         for(let j=0; j<stepperCollect("bestautospeaker");j++){
-            bestAuto += "Amp ";
+            bestAuto += "Amp, ";
         }
 
         pitjsobj["bestauto"] = bestAuto;
