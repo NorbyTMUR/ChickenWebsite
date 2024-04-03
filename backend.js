@@ -12,7 +12,7 @@
     function redFunction() {
         redAlliance = true;
         blueAlliance = false;
-        document.getElementById("allianceRed").innerHTML = "you clicked me";
+        document.getElementById("allianceRed").innerHTML = "Red (selected)";
         document.getElementById("allianceBlue").innerHTML = "Blue";
         console.log(redAlliance);
     }
@@ -20,7 +20,7 @@
     function blueFunction(){
         blueAlliance = true;
         redAlliance = false;
-        document.getElementById("allianceBlue").innerHTML = "you clicked me";  
+        document.getElementById("allianceBlue").innerHTML = "Blue (selected)";  
         document.getElementById("allianceRed").innerHTML = "Red";  
         //for testing
         console.log(redAlliance);
@@ -228,7 +228,7 @@
         }
 
         pitjsobj["bestauto"] = bestAuto;
-        if(fnChecked("defense")==true){
+        if(fnChecked("defense")){
             pitjsobj["defense"] = "yes";
         }
         else{
@@ -241,11 +241,11 @@
         pitjsobj["understage"] = fnChecked("understage");
         pitjsobj["trap"] = fnChecked("trap");
 
-        if(fnChecked("humanplayer")==true){
-            pitjsobj["humanplayer"] = "yes";
+        if(fnChecked("humanplayer")){
+            pitjsobj["humanplayer"] = "High";
         }
         else{
-            pitjsobj["humanplayer"] = "no";
+            pitjsobj["humanplayer"] = "Low";
         }
 
         pitjsobj["extranotes"] = getTextInput("extranotes");
