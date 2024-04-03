@@ -123,10 +123,10 @@
         jsobj["matchnumber"] = JSON.parse(getNumberInput("matchnumber"));
         //turns the blueAlliance/ redAlliance booleans into a string to match
         //the existing database.
-        if(blueAlliance ==true && redAlliance == false){
+        if(blueAlliance && !redAlliance){
             jsobj["alliance"] = "Blue";
         }
-        else if (redAlliance == true && blueAlliance == false){
+        else if (redAlliance && !blueAlliance){
             jsobj["alliance"] = "Red";
         }
         else{
@@ -147,7 +147,7 @@
         jsobj["climbed"] = fnChecked("climbed");
         jsobj["parked"] = fnChecked("parked");
 
-        jsobj["traps"] = fnChecked("traps");
+        jsobj["traps"] = pointCounter("numtrapspoints") > 0;
         jsobj["numtraps"] = pointCounter("numtrapspoints");
         jsobj["offeredcoop"] = fnChecked("offeredcoop");
         jsobj["didcoop"] = fnChecked("didcoop");
@@ -193,7 +193,6 @@
 
         resetCheckbox("climbed");
         resetCheckbox("parked");
-        resetCheckbox("traps");
         resetPluMinus("numtrapspoints");
         resetCheckbox("offeredcoop");
         resetCheckbox("didcoop");
