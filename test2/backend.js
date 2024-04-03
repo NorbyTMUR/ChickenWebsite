@@ -250,7 +250,7 @@
 
         
          
-       /** $.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", pitjsonstr, (data, status) => {
+        /**$.post("http://98.59.100.219/matchinput/v1/"+getNumberInput("teamnumber")+"/data/pit", pitjsonstr, (data, status) => {
             console.log(data);
         }); */
     }
